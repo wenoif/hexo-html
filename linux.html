@@ -1,0 +1,447 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>linux | 博客</title><meta name="keywords" content="linux"><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="零碎知识bc计算器输入bc进入交互模式，输入quit退出交互模式。 indent格式调整Linux indent命令用于调整C原始代码文件的格式，indent可辨识C的原始代码文件，并加以格式化，以方便程序设计师阅读。  indent [参数][源文件] 或 indent [参数][源文件][-o 目标文件] 格式化成K&amp;R风格：indent -kr  main.c   目录结构gr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux">
+<meta property="og:url" content="https://github.com/wenoif/linux.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="零碎知识bc计算器输入bc进入交互模式，输入quit退出交互模式。 indent格式调整Linux indent命令用于调整C原始代码文件的格式，indent可辨识C的原始代码文件，并加以格式化，以方便程序设计师阅读。  indent [参数][源文件] 或 indent [参数][源文件][-o 目标文件] 格式化成K&amp;R风格：indent -kr  main.c   目录结构gr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-09-16T03:19:54.000Z">
+<meta property="article:modified_time" content="2021-09-06T15:50:07.272Z">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg"><link rel="canonical" href="https://github.com/wenoif/linux"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-06 23:50:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/main.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">linux</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-09-16T03:19:54.000Z" title="undefined 2020-09-16 11:19:54">2020-09-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"> <a id="more"></a>
+
+<h2 id="零碎知识"><a href="#零碎知识" class="headerlink" title="零碎知识"></a>零碎知识</h2><h3 id="bc计算器"><a href="#bc计算器" class="headerlink" title="bc计算器"></a>bc计算器</h3><p>输入bc进入交互模式，输入quit退出交互模式。</p>
+<h3 id="indent格式调整"><a href="#indent格式调整" class="headerlink" title="indent格式调整"></a>indent格式调整</h3><p>Linux indent命令用于调整C原始代码文件的格式，indent可辨识C的原始代码文件，并加以格式化，以方便程序设计师阅读。</p>
+<ul>
+<li><code>indent [参数][源文件] 或 indent [参数][源文件][-o 目标文件]</code></li>
+<li>格式化成K&amp;R风格：<code>indent -kr  main.c </code></li>
+</ul>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line"></span><br><span class="line">A[系统目录结构]--&gt;AA[bin	系统可以执行程序存放目录]</span><br><span class="line">A[系统目录结构]--&gt;AB[boot	内核和启动程序的相关文件]</span><br><span class="line">A[系统目录结构]--&gt;AC[lib	库目录,存放系统最基本的动态共享库]</span><br><span class="line">A[系统目录结构]--&gt;AD[media	挂载设备媒体,U盘,硬盘等]</span><br><span class="line">A[系统目录结构]--&gt;AE[mnt	让用户挂载别的文件系统]</span><br><span class="line">A[系统目录结构]--&gt;AF[usr	庞大和复杂的目录,很多应用安装到此目录]</span><br><span class="line">		AF[usr	庞大和复杂的目录,很多应用安装到此目录]--&gt;AFA[usr&#x2F;local	用户自己安装软件的目录]</span><br><span class="line">A[系统目录结构]--&gt;AG[sbin		超级管理员root的可以执行程序存放目录]</span><br><span class="line">A[系统目录结构]--&gt;AH[proc		系统内存的映射]</span><br><span class="line">A[系统目录结构]--&gt;AK[etc		系统软件的启动和配置目录]</span><br><span class="line">A[系统目录结构]--&gt;AI[home		用户家目录]</span><br><span class="line">A[系统目录结构,一切皆文件]--&gt;AJ[dev		设备文件所在目录]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h2><p>第一个字符表示文件类型：<code>-rwxrwxrwx 1 ubuntu root 0 May 26 11:44 test</code></p>
+<ul>
+<li>-  普通类型</li>
+<li>d 目录类型</li>
+<li>l 符号链接</li>
+<li>b 块设备</li>
+<li>c 字符设备</li>
+<li>p 管道设备</li>
+<li>s 本地套接字</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li>man 查看命令帮助信息</li>
+<li>history 历史</li>
+<li>ls 查看<ul>
+<li>ls -a 查看所有文件，包括隐藏文件</li>
+<li>ls  -l 查看文件详细信息</li>
+<li>ls  -R 查看子目录文件信息</li>
+<li>ls  -lrt 按照修改时间排序</li>
+<li>通配符* 匹配任意多字符</li>
+<li>通配符？匹配一个字符 </li>
+</ul>
+</li>
+</ul>
+<h3 id="关于目录"><a href="#关于目录" class="headerlink" title="关于目录"></a>关于目录</h3><ul>
+<li>cd<ul>
+<li>回家目录：cd  /home/username</li>
+<li>回家目录：cd  ~</li>
+<li>回家目录：cd  </li>
+<li>回家目录：cd  $HOME</li>
+<li>回家目录：cd  $home</li>
+</ul>
+</li>
+<li>pwd</li>
+<li>which查看路径<ul>
+<li>which ls 查看ls命令所在路径</li>
+</ul>
+</li>
+<li>mkdir创建目录<ul>
+<li>mkdir a/b/c/d -p  递归创建目录</li>
+</ul>
+</li>
+<li>rmdir删除目录<ul>
+<li>rmdir a/b/c/d -p  删除d目录后若c为空则递归删除c目录，以此类推</li>
+<li>空目录是只包含“.”和”..”的目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="关于文件"><a href="#关于文件" class="headerlink" title="关于文件"></a>关于文件</h3><ul>
+<li>touch</li>
+<li>rm<ul>
+<li>rm filename</li>
+<li>rm -rf filename 强制删除目录下内容</li>
+</ul>
+</li>
+<li>cp复制拷贝<ul>
+<li>cp /home/userone/a.c /home/usertwo/a.c  cp 原位置  新位置</li>
+</ul>
+</li>
+<li>mv重命名移动<ul>
+<li>mv old new 重命名</li>
+</ul>
+</li>
+<li>cat</li>
+<li>more 分屏查看文件，空格-&gt;下一屏；回车-&gt;下一部分</li>
+<li>less   分屏查看文件，使用方向键控制</li>
+<li>head 显示文件头，默认10行<ul>
+<li>head -15 test.md  查看test.md文件头15行</li>
+</ul>
+</li>
+<li>tail 显示文件尾，默认10行<ul>
+<li>tail -15 test.md  查看test.md文件尾15行</li>
+<li>tail -f test.md  不退出查看，追踪日志</li>
+</ul>
+</li>
+</ul>
+<h3 id="统计信息"><a href="#统计信息" class="headerlink" title="统计信息"></a>统计信息</h3><ul>
+<li>tree </li>
+<li>wc<ul>
+<li>wc test.md  查看test.md文件信息，默认：行数 单词数 字节数 文件名</li>
+<li>wc * 统计整个目录</li>
+<li>wc test.md  -l 查看test.md文件行数 </li>
+<li>wc test.md  -w 查看test.md文件单词数</li>
+<li>wc test.md  -c 查看test.md文件字节数</li>
+</ul>
+</li>
+<li>du 用于显示目录或文件的大小。</li>
+<li>df 用于显示目前在Linux系统上的文件系统的磁盘使用情况统计。</li>
+</ul>
+<h3 id="关于权限"><a href="#关于权限" class="headerlink" title="关于权限"></a>关于权限</h3><ul>
+<li>whoami 显示当前用户</li>
+<li>ln 链接<ul>
+<li>软链接（快捷方式）：ln -s 源文件 新文件</li>
+<li>硬链接： ln 源文件 新文件</li>
+<li>unlink filename   删除引用计数和文件，引用计数为0时删除</li>
+<li>stat file 查看文件inode信息</li>
+</ul>
+</li>
+<li>chmod使用权限<ul>
+<li>chmod   [u|g|o]  +  [r|w|x]  file   <ul>
+<li>u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</li>
+<li>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</li>
+<li>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</li>
+</ul>
+</li>
+<li>chmod 0777 file 数字设置权限。分别表示User、Group、及Other的权限。r=4，w=2，x=1</li>
+</ul>
+</li>
+<li>chown拥有权限<ul>
+<li>利用 chown 将指定文件的拥有者改为指定的用户或组，用户可以是用户名或者用户ID；组可以是组名或者组ID；文件是以空格分开的要改变权限的文件列表，支持通配符。 </li>
+<li>chown [-cfhvR] [–help] [–version] user[:group] file…<ul>
+<li>user : 新的文件拥有者的使用者 ID</li>
+<li>group : 新的文件拥有者的使用者组(group)</li>
+<li>-c : 显示更改的部分的信息</li>
+<li>-f : 忽略错误信息</li>
+<li>-h :修复符号链接</li>
+<li>-v : 显示详细的处理信息</li>
+<li>-R : 处理指定目录以及其子目录下的所有文件</li>
+<li>–help : 显示辅助说明</li>
+<li>–version : 显示版本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>chgrp所属权限<ul>
+<li>用于变更文件或目录的所属群组。</li>
+<li><code>chgrp [-cfhRv][--help][--version][所属群组][文件或目录...] 或 chgrp [-cfhRv][--help][--reference=&lt;参考文件或目录&gt;][--version][文件或目录...]</code><ul>
+<li>-c或–changes 效果类似”-v”参数，但仅回报更改的部分。</li>
+<li>-f或–quiet或–silent 　不显示错误信息。</li>
+<li>-h或–no-dereference 　只对符号连接的文件作修改，而不更动其他任何相关文件。</li>
+<li>-R或–recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。</li>
+<li>-v或–verbose 　显示指令执行过程。</li>
+<li>–help 　在线帮助。</li>
+<li>–reference=&lt;参考文件或目录&gt; 　把指定文件或目录的所属群组全部设成和参考文件或目录的所属群组相同。</li>
+<li>–version 　显示版本信息。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="关于查找"><a href="#关于查找" class="headerlink" title="关于查找"></a>关于查找</h3><ul>
+<li>find<ul>
+<li>find 命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则 find 命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</li>
+<li>find . -name “*.c” 将目前目录及其子目录下所有延伸档名是 c 的文件列出来。</li>
+<li>find . -type f 将目前目录其其下子目录中所有一般文件列出</li>
+</ul>
+</li>
+<li>grep<ul>
+<li>grep 命令用于查找文件里符合条件的字符串。如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 **-**，则 grep 指令会从标准输入设备读取数据。</li>
+<li>grep test *file 在当前目录中，查找后缀有 file 字样的文件中包含 test 字符串的文件，并打印出该字符串的行。</li>
+</ul>
+</li>
+</ul>
+<h3 id="解压缩包"><a href="#解压缩包" class="headerlink" title="解压缩包"></a>解压缩包</h3><h3 id="关于软件"><a href="#关于软件" class="headerlink" title="关于软件"></a>关于软件</h3><ul>
+<li>自动安装</li>
+<li>deb/rpm安装包安装</li>
+<li>源码安装</li>
+</ul>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><ul>
+<li>添加 sudo useradd name</li>
+<li>设置密码 sudo passwd name</li>
+</ul>
+<h3 id="关机重启"><a href="#关机重启" class="headerlink" title="关机重启"></a>关机重启</h3><ul>
+<li>立即关机 shutdown -h now</li>
+<li>关机 init()</li>
+<li>关机 poweroff</li>
+<li>重启 reboot</li>
+</ul>
+<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><ul>
+<li>获取时间date</li>
+<li>输出变量或字符串 echo</li>
+<li>命令重命名alias</li>
+</ul>
+<h3 id="man的使用"><a href="#man的使用" class="headerlink" title="man的使用"></a>man的使用</h3><p>“man” 是英文单词manual的缩写，中文意为手册、帮助文档，man分成很多部分，分卷号不同其功能也不同。</p>
+<blockquote>
+<p>1、Standard commands （标准命令）<br>2、System calls （系统调用）<br>3、Library functions （库函数）<br>4、Special devices （设备说明）<br>5、File formats （文件格式）<br>6、Games and toys （游戏和娱乐）<br>7、Miscellaneous （杂项）<br>8、Administrative Commands （管理员命令）<br>9 其他（Linux特定的）， 用来存放内核例行程序的文档。</p>
+</blockquote>
+<p>一般系统没有man命令，如果只安装man，就只能查看第一部分标准命令，查看其他部分命令需要安装man-pages</p>
+<p><code>yum install man-pages -y</code></p>
+<h2 id="GCC编译"><a href="#GCC编译" class="headerlink" title="GCC编译"></a>GCC编译</h2><p>经历四个相互关联的步骤∶预处理（也称预编译，Preprocessing）、编译（Compilation）、汇编（Assembly）和链接（Linking）。</p>
+<table>
+<thead>
+<tr>
+<th>编译过程</th>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>预处理</td>
+<td>gcc    -E    hello.c   -o    hello.i</td>
+<td>展开头文件,删除注释.条件编译,展开宏定义</td>
+</tr>
+<tr>
+<td>编译</td>
+<td>gcc    -S    hello.i    -o    hello.s</td>
+<td>检查语法，转换成汇编语言</td>
+</tr>
+<tr>
+<td>汇编</td>
+<td>gcc    -c    hello.s    -o    hello.o</td>
+<td>汇编语言转换成机器语言</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>gcc           hello.o    -o    hello.exe(自定义)</td>
+<td>链接不同操作系统下的库文件</td>
+</tr>
+</tbody></table>
+<h2 id="函数库"><a href="#函数库" class="headerlink" title="函数库"></a>函数库</h2><p>库类似于头文件，但不同是用户可以看到头文件内的源码，而看不到库的源码。动态库是指将库存在系统库里面，供程序调用，可以多个程序共用一个库。静态库则是将库和程序源码打包在一起，不需要其他的库，缺点是占用内存比动态库多，优点是独立。动态库类似软连接，静态库则是硬链接。</p>
+<p>展示案例代码：</p>
+<ul>
+<li><p>head.h</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fun1.c</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;this is fun1\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fun2.c</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;this is fun2\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>main.c</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&quot;head.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;this is main\n&quot;</span>);</span><br><span class="line">	fun1();</span><br><span class="line">	fun2();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h3><p>制作</p>
+<ul>
+<li><p>将.c编译成.o文件： <code>gcc -c fun1.c fun2.c</code></p>
+</li>
+<li><p>打包成.a文件：<code>ar rcs libtest1.a fun1.o fun2.o</code></p>
+</li>
+</ul>
+<p>使用</p>
+<ul>
+<li><p>使用静态库： <code>gcc -o main main.c -I./ -L./ -ltest1</code></p>
+<ul>
+<li>I：头文件位置</li>
+<li>L：库路径</li>
+<li>l：库名，去除开头lib 和结尾.c</li>
+</ul>
+</li>
+<li><p><code>./main</code></p>
+</li>
+</ul>
+<h3 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h3><p>制作</p>
+<ul>
+<li><code>gcc -fpic -c fun1.c fun2.c</code></li>
+<li><code>gcc -shared fun1.o fun2.o  -o libtest2.so</code><ul>
+<li>查看库内函数：<code>nm libtest2.so</code></li>
+</ul>
+</li>
+</ul>
+<p>使用</p>
+<ul>
+<li> <code>gcc -o main main.c -I./ -L./ -ltest2</code></li>
+</ul>
+<p>动态链接库</p>
+<ul>
+<li><p>【推荐】修改环境变量</p>
+<ul>
+<li>临时修改环境变量：<code>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:库文件所在位置</code></li>
+<li>永久设置：将<code>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:库文件所在位置</code>添加到~/.bashrc中，然后执行<code>. ~/.bashrc</code> 或者<code>source ~/.bashrc</code> 或者重新登录终端</li>
+</ul>
+</li>
+<li><p>拷贝到：<code>/usr/lib</code>或 <code>lib</code></p>
+</li>
+<li><p>添加到 <code>/etc/profile</code></p>
+</li>
+<li><p>添加到 <code>/etc/ld.so.cache</code></p>
+<ul>
+<li>添加后使用 <code>sudo ldconfig -v</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><ul>
+<li><p>makefile用来管理项目工程文件，通过执行make命令解析并执行makefile文件。文件命名为makefile或者Makefile。</p>
+</li>
+<li><pre><code>main: main.c fun1.c fun2.c
+    gcc -o main main.c fun1.c fun2.c
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ </span><br><span class="line"></span><br><span class="line">+ &#96;&#96;&#96;</span><br><span class="line">  main: main.o fun1.o fun2.o</span><br><span class="line">  	gcc -o main main.o fun1.o fun2.o</span><br><span class="line">  </span><br><span class="line">  main.o: main.c</span><br><span class="line">  	gcc -c main.c -I.&#x2F;</span><br><span class="line">  </span><br><span class="line">  fun1.o: fun1.c</span><br><span class="line">  	gcc -c fun1.c</span><br><span class="line">  </span><br><span class="line">  fun2.o: fun2.c</span><br><span class="line">  	gcc -c fun2.c</span><br><span class="line">  </span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li></li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/linux/">linux</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/blog/vim.html" title="vim"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-18</div><div class="title">vim</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86"><span class="toc-text">零碎知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bc%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="toc-text">bc计算器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#indent%E6%A0%BC%E5%BC%8F%E8%B0%83%E6%95%B4"><span class="toc-text">indent格式调整</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">文件类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%9B%AE%E5%BD%95"><span class="toc-text">关于目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6"><span class="toc-text">关于文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF"><span class="toc-text">统计信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9D%83%E9%99%90"><span class="toc-text">关于权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9F%A5%E6%89%BE"><span class="toc-text">关于查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-text">解压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%BD%AF%E4%BB%B6"><span class="toc-text">关于软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">用户管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF"><span class="toc-text">关机重启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="toc-text">其他命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#man%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">man的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCC%E7%BC%96%E8%AF%91"><span class="toc-text">GCC编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BA%93"><span class="toc-text">函数库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93"><span class="toc-text">静态库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93"><span class="toc-text">动态库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Makefile"><span class="toc-text">Makefile</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By null</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="/blog/js/tw_cn.js"></script><script src="/blog/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

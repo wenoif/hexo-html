@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>杂乱笔记整理 | 博客</title><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="杂七杂八的随手记录 linux系统代理apt使用代理：sudo apt-get -o Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;&quot; update alpine网卡配置配置文件：&#x2F;etc&#x2F;network&#x2F;interfaces 重启网络服务：service networking restart auto loiface lo inet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杂乱笔记整理">
+<meta property="og:url" content="https://github.com/wenoif/notes.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="杂七杂八的随手记录 linux系统代理apt使用代理：sudo apt-get -o Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;&quot; update alpine网卡配置配置文件：&#x2F;etc&#x2F;network&#x2F;interfaces 重启网络服务：service networking restart auto loiface lo inet">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-05-18T00:31:54.000Z">
+<meta property="article:modified_time" content="2021-09-06T15:50:07.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg"><link rel="canonical" href="https://github.com/wenoif/notes"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-06 23:50:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/main.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">杂乱笔记整理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2021-05-18T00:31:54.000Z" title="undefined 2021-05-18 08:31:54">2021-05-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/">杂七杂八</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><p>杂七杂八的随手记录</p>
+<h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1><h2 id="系统代理"><a href="#系统代理" class="headerlink" title="系统代理"></a>系统代理</h2><p>apt使用代理：<code>sudo apt-get -o Acquire::http::proxy=&quot;http://127.0.0.1:8000/&quot; update</code></p>
+<h2 id="alpine网卡配置"><a href="#alpine网卡配置" class="headerlink" title="alpine网卡配置"></a>alpine网卡配置</h2><p>配置文件：<code>/etc/network/interfaces</code></p>
+<p>重启网络服务：service networking restart</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"> </span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet dhcp</span><br><span class="line">      hostname localhost</span><br><span class="line"></span><br><span class="line">iface eth1 inet static</span><br><span class="line">        address 192.168.1.150</span><br><span class="line">        netmask 255.255.255.0</span><br><span class="line">        gateway 192.168.1.1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Clash-Linux"><a href="#Clash-Linux" class="headerlink" title="Clash-Linux"></a>Clash-Linux</h2><p>解压：gunzip Desktop/clash-linux-amd64-v1.6.0.gz<br>订阅：wget -O config.yaml [订阅链接]<br>启动：./clash -d .<br>配置：<a target="_blank" rel="noopener" href="http://clash.razord.top/#/settings">http://clash.razord.top/#/settings</a></p>
+<p>配置结果测试：wget <a target="_blank" rel="noopener" href="http://google.com/favicon.ico">http://google.com/favicon.ico</a></p>
+<p>系统代理：/etc/profile</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export http_proxy&#x3D;http:&#x2F;&#x2F;0.0.0.0:7890</span><br><span class="line">export https_proxy&#x3D;https:&#x2F;&#x2F;0.0.0.0:7890</span><br><span class="line">#export ftp_proxy&#x3D;https:&#x2F;&#x2F;0.0.0.0:7890</span><br><span class="line">export no_proxy&#x3D;192.0.0.0&#x2F;8</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="没有找到ifconfig命令"><a href="#没有找到ifconfig命令" class="headerlink" title="没有找到ifconfig命令"></a>没有找到ifconfig命令</h2><p>提示报错为“ifconfig: command not found”</p>
+<ul>
+<li>方法1：安装net-tools： yum install net-tools</li>
+<li>方法2：<ul>
+<li>使用ip addr 查看网卡，</li>
+<li>cd/etc/sysconfig/network-scripts，</li>
+<li>vi ifcfg-网卡名称</li>
+<li>修改BOOTPROTO=dhcp、ONBOOT=yes，</li>
+<li>reboot</li>
+<li>重启后使用ip addr查看ip地址</li>
+</ul>
+</li>
+</ul>
+<h2 id="服务进程管理"><a href="#服务进程管理" class="headerlink" title="服务进程管理"></a>服务进程管理</h2><p><strong>service</strong></p>
+<p>service命令用于对系统服务进行管理，比如启动（start）、停止（stop）、重启（restart）、查看状态（status）等。</p>
+<p>service命令语法为：service [服务名称] [start/stop/restart/status]</p>
+<p><strong>systemd</strong></p>
+<p>systemd是对service命令的升级，最后一个字母d是守护进程daemon的缩写。Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面。systemctl是 Systemd 的主命令，用于管理系统。</p>
+<p>systemctl命令语法为：systemctl [start/stop/restart/status]  [服务名称]</p>
+<p><strong>chkconfig</strong></p>
+<p>chkconfig命令用于检查，设置系统的各种服务。</p>
+<p>chkconfig sshd on 表示开机自动启动sshd服务；</p>
+<p>chkconfig sshd off 表示关闭开机自动启动sshd服务；</p>
+<h2 id="关闭占用端口的进程"><a href="#关闭占用端口的进程" class="headerlink" title="关闭占用端口的进程"></a>关闭占用端口的进程</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看占用端口的程序</span></span><br><span class="line">netstat -tln | grep [port]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看被占用端口的程序PID</span></span><br><span class="line">sudo lsof -i:8000 [port]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据PID杀掉指定进程</span></span><br><span class="line">sudo <span class="built_in">kill</span> -9 [pid]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Apache配置userdir"><a href="#Apache配置userdir" class="headerlink" title="Apache配置userdir"></a>Apache配置userdir</h2><p>启用模块：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">vim /etc/httpd/conf/httpd.conf</span><br><span class="line">去掉注释#启用以下（或者在最后一行添加）：</span><br><span class="line"></span><br><span class="line">Include conf.modules.d/*.conf</span><br><span class="line"></span><br><span class="line">Include conf.d/*.conf</span><br></pre></td></tr></table></figure>
+
+<p>编辑配置：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">vim /etc/httpd/conf.d/userdir.conf</span><br><span class="line">找到UserDir，设置为enable：</span><br><span class="line">UserDir enable</span><br><span class="line"></span><br><span class="line">取消UserDir public_html的注释，意思是默认读取用户目录下的public_html文件夹作为网站根目录</span><br><span class="line">UserDir public_html</span><br></pre></td></tr></table></figure>
+
+<p>创建两个用户，创建文件夹，创建html文件</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">useradd ceshi1</span><br><span class="line">passwd ceshi1</span><br><span class="line">mkdir /home/ceshi1/public_html/</span><br><span class="line">vim /home/ceshi1/public_html/index.html  # 随便输入内容，然后保存</span><br><span class="line"></span><br><span class="line">useradd ceshi2</span><br><span class="line">passwd ceshi2</span><br><span class="line">mkdir /home/ceshi2/public_html/</span><br><span class="line">vim /home/ceshi2/public_html/index.html  # 随便输入内容，然后保存</span><br></pre></td></tr></table></figure>
+
+<p>重启httpd</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">systemctl restart httpd</span><br></pre></td></tr></table></figure>
+
+<p>浏览器分别访问：127.0.0.1/<del>ceshi1  和 127.0.0.1/</del>ceshi2</p>
+<p>i</p>
+<h2 id="换源后更新失败"><a href="#换源后更新失败" class="headerlink" title="换源后更新失败"></a>换源后更新失败</h2><ul>
+<li>在<code>/etc/resolv.conf</code>添加<code>nameserver 8.8.8.8</code></li>
+<li>源地址改成http</li>
+<li>连接到wifi网络</li>
+</ul>
+<h2 id="查看发行信息"><a href="#查看发行信息" class="headerlink" title="查看发行信息"></a>查看发行信息</h2><p><code>lsb_release</code></p>
+<h2 id="ssh乱码"><a href="#ssh乱码" class="headerlink" title="ssh乱码"></a>ssh乱码</h2><p>解决ssh远程连接时按方向键等出现乱码，且不显示用户名、主机名 原因： 新建用户使用了不同的shell，cat /etc/passwd 可以查看用户后为默认的sh而不是bash 解决： vim /etc/passwd 将用户后面的sh修改为bash</p>
+<h1 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h1><h2 id="VsCode报错"><a href="#VsCode报错" class="headerlink" title="VsCode报错"></a>VsCode报错</h2><p>Windows 下 VSCode 使用 SSH 连接报 Bad owner or permissions on C:\Users\Administrator/.ssh/config 错误问题解决，参考如下：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Akkuman/p/11187776.html">https://www.cnblogs.com/Akkuman/p/11187776.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://zixizixi.cn/windows*vscode*ssh*error*bad-owner-or-permissions">https://zixizixi.cn/windows*vscode*ssh*error*bad-owner-or-permissions</a></li>
+</ul>
+<h2 id="共享局域网代理"><a href="#共享局域网代理" class="headerlink" title="共享局域网代理"></a>共享局域网代理</h2><ul>
+<li>电脑打开代理软件的全局模式，在设置中“允许来自局域网的连接”，电脑开启热点，</li>
+<li>电脑设置-&gt;代理-&gt;使用代理服务器-&gt;地址“127.0.0.1” -&gt;端口”10809”-&gt;清空白名单-&gt;保存</li>
+<li>电脑设置-&gt;更新和安全-&gt;Windows安全中心-&gt;防火墙和网络保护-&gt;关闭保护</li>
+<li>手机链接热点，更多设置-&gt;代理-&gt;手动-&gt;<ul>
+<li>主机名为路由器(热点)IP，可以使用“ipconfig”查看[通常192.168.137.1]，</li>
+<li>端口：“10809”</li>
+<li>不使用网址：清空</li>
+<li>保存</li>
+</ul>
+</li>
+<li>开始使用</li>
+</ul>
+<h2 id="VM-Workstation-报错"><a href="#VM-Workstation-报错" class="headerlink" title="VM Workstation 报错"></a>VM Workstation 报错</h2><p>报错:Failed to install the hcmon drive</p>
+<p>原文链接:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41895190/article/details/82911853">https://blog.csdn.net/qq_41895190/article/details/82911853</a></p>
+<blockquote>
+<p>  1.首先桌面上新建一个文本文档<strong>，</strong>将下面的代码复制进去：</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion]</span><br><span class="line">&quot;ProgramFilesDir&quot;&#x3D;&quot;C:\\Program Files&quot;</span><br><span class="line">&quot;CommonFilesDir&quot;&#x3D;&quot;C:\\Program Files\\Common Files&quot;</span><br><span class="line">&quot;ProgramFilesDir (x86)&quot;&#x3D;&quot;C:\\Program Files (x86)&quot;</span><br><span class="line">&quot;CommonFilesDir (x86)&quot;&#x3D;&quot;C:\\Program Files (x86)\\Common Files&quot;</span><br><span class="line">&quot;CommonW6432Dir&quot;&#x3D;&quot;C:\\Program Files\\Common Files&quot;</span><br><span class="line">&quot;DevicePath&quot;&#x3D;hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,\</span><br><span class="line"> 00,74,00,25,00,5c,00,69,00,6e,00,66,00,00,00</span><br><span class="line">&quot;MediaPathUnexpanded&quot;&#x3D;hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,\</span><br><span class="line"> 6f,00,6f,00,74,00,25,00,5c,00,4d,00,65,00,64,00,69,00,61,00,00,00</span><br><span class="line">&quot;ProgramFilesPath&quot;&#x3D;hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,\</span><br><span class="line"> 00,69,00,6c,00,65,00,73,00,25,00,00,00</span><br><span class="line">&quot;ProgramW6432Dir&quot;&#x3D;&quot;C:\\Program Files&quot;</span><br></pre></td></tr></table></figure>
+
+<p>  2.将文件名改为：<code>修复.reg</code> ,一定要将文本文档默认的<code>.txt</code>也删掉，然后保存。</p>
+<p>  3.点击执行，对于弹窗点击是否继续，果断选择“是”。</p>
+<p>  4.重新安装VM</p>
+<p>  附上VMware15的激活码：</p>
+<p>  YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8</p>
+<p>  UG5J2-0ME12-M89WY-NPWXX-WQH88</p>
+<p>  UA5DR-2ZD4H-089FY-6YQ5T-YPRX6</p>
+<p>  GA590-86Y05-4806Y-X4PEE-ZV8E0</p>
+<p>  ZF582-0NW5N-H8D2P-0XZEE-Z22VA</p>
+<p>  YA18K-0WY8P-H85DY-L4NZG-X7RAD</p>
+</blockquote>
+<p>报错提示：VMware Workstation 在此主机上不支持嵌套虚拟化。模块“MonitorMode”启动失败。未能启动虚拟机</p>
+<p>“微软的Hyper-V在启用的时候，宿主机也被虚拟化了，以至于在宿主机上直接访问CPU的其他虚拟技术会失效。即使VT-X在BIOS里面开了，Intel的CPU检测工具也会报告CPU不支持VT-X。可以在管理员命令行下运行bcdedit /set hypervisorlaunchtype off之后重启来关闭Hyper-V。”</p>
+<h2 id="查看系统信息"><a href="#查看系统信息" class="headerlink" title="查看系统信息"></a>查看系统信息</h2><p>方法1:[WIN + R] —-&gt; 输入”dxdiag” —-&gt; 确定  —-&gt;  弹出”DirectX诊断工具”</p>
+<p>方法2:cmd输入”slmgr/dlv” 回车</p>
+<h2 id="更新到最新系统"><a href="#更新到最新系统" class="headerlink" title="更新到最新系统"></a>更新到最新系统</h2><p>方法一：Windows Update更新(开始—设置—更新和安全)</p>
+<p>方法二：微软Windows 10易升(<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows10">下载链接</a>)</p>
+<p>方法三：使用Media Creation Tool创建安装介质</p>
+<p>方法四：下载镜像手动更新</p>
+<h1 id="黑苹果"><a href="#黑苹果" class="headerlink" title="黑苹果"></a>黑苹果</h1><h2 id="BigSur进入引导后读取不到内置硬盘"><a href="#BigSur进入引导后读取不到内置硬盘" class="headerlink" title="BigSur进入引导后读取不到内置硬盘"></a>BigSur进入引导后读取不到内置硬盘</h2><p>参考：<a target="_blank" rel="noopener" href="https://macx.top/14717.html">https://macx.top/14717.html</a></p>
+<p>工具下载：</p>
+<ol>
+<li>ProperTree是一款跨平台的Plist编辑软件<a href="https://github.com/corpnewt/ProperTree">https://github.com/corpnewt/ProperTree</a></li>
+<li><strong>CtlnaAHCIPort.kext：</strong><a target="_blank" rel="noopener" href="https://d.serctl.com/?uuid=b5d3f32d-8b6b-4ef6-9e56-62b2f6a54a3c">https://d.serctl.com/?uuid=b5d3f32d-8b6b-4ef6-9e56-62b2f6a54a3c</a></li>
+</ol>
+<p>查看硬盘id：文件夹顶部工具栏—&gt;计算机—&gt;管理—&gt;设备管理器—&gt;IDE ATAxxxxx控制器—&gt;属性—&gt;硬件id—&gt;记录“DEV_xxxx&amp;SUBSYS_xxxx”中xxxx代表的数字。</p>
+<p>硬盘id注入：propertree打开CtlnaAHCIPor.kext/Contents/Info.plist。找到相应位置修改id。</p>
+<p>保存退出，将CtlnaAHCIPor.kext 放到OC的kext文件夹下（注意在config添加一下）、clover直接放到kext/other下面。</p>
+<h1 id="黑群晖"><a href="#黑群晖" class="headerlink" title="黑群晖"></a>黑群晖</h1><h2 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h2><ul>
+<li><p>局域网内安装辅助工具：<a target="_blank" rel="noopener" href="http://find.synology.com/">http://find.synology.com/</a></p>
+</li>
+<li><p>OPENOS论坛：<a target="_blank" rel="noopener" href="https://www.openos.org/">https://www.openos.org/</a></p>
+</li>
+<li><p>XPEnoboot/DSM下载地址</p>
+<ul>
+<li>官方网站 <a target="_blank" rel="noopener" href="https://download.xpenology.xyz/">https://download.xpenology.xyz/</a></li>
+<li>国内的镜像 <a target="_blank" rel="noopener" href="https://www.openos.org/downloads/xpenoboot-for-dsm.3/">https://www.openos.org/downloads/xpenoboot-for-dsm.3/</a><br>注意，版本XPEnoboot和DSM版本一定要对应，不能混用</li>
+</ul>
+</li>
+</ul>
+<h2 id="XPEnoboot"><a href="#XPEnoboot" class="headerlink" title="XPEnoboot"></a>XPEnoboot</h2><p>XPEnoboot是一个DSM系统引导程序，方便用户在普通电脑上安装Synology DSM，另外只XPEnoboot支持x64位的CPU，不支持很老的32位CPU了，(一般2005年以后的CPU都支持x64位）</p>
+<h2 id="镜像文件"><a href="#镜像文件" class="headerlink" title="镜像文件"></a>镜像文件</h2><p>一般情况XPEnoboot会提供三种镜像文件，分别是<br>XPEnoboot_DS3615xs_X.X-XXXX.X.img (普通img镜像格式)<br>XPEnoboot_DS3615xs_X.X-XXXX.X.iso (普通iso镜像格式)<br>XPEnoboot_DS3615xs_X.X-XXXX.X.vmdk (VMware创建的虚拟硬格式)<br>另外还有Synology官方的pat文件<br>DSM_DS3615xs_XXXX.pat (官方DSM操作系统文件)</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="JS返回随机数函数"><a href="#JS返回随机数函数" class="headerlink" title="JS返回随机数函数"></a>JS返回随机数函数</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 返回随机数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RandomNum</span>(<span class="params">minNum, maxNum</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">switch</span> (<span class="built_in">arguments</span>.length)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * minNum + <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * (maxNum - minNum + <span class="number">1</span>) + minNum, <span class="number">10</span>);</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="python计算学分绩"><a href="#python计算学分绩" class="headerlink" title="python计算学分绩"></a>python计算学分绩</h2><p>学业成绩（平均学分绩）（加权平均分）：每门成绩乘以它的权值比例后算出的平均成绩。平均学分绩<em>0.8就是学业表现。 例如： 课程1的成绩82，学分4；课程1的成绩86，学分2；平均学分绩（加权平均分）=(82\</em>4+86*2)/(4+2)=83.3；python脚本：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    a=<span class="number">0</span></span><br><span class="line">    b=<span class="number">0</span></span><br><span class="line">    c=<span class="number">0</span></span><br><span class="line">    i=<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">            aa=<span class="built_in">input</span>(<span class="string">&quot;请输入课程%d的成绩(输入exit结束)：&quot;</span> % i)</span><br><span class="line">            <span class="keyword">if</span>(aa==<span class="string">&quot;exit&quot;</span>):</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            bb=<span class="built_in">input</span>(<span class="string">&quot;请输入课程%d的学分：&quot;</span> % i)</span><br><span class="line">            i=i+<span class="number">1</span></span><br><span class="line">            a=a+<span class="built_in">int</span>(aa)*<span class="built_in">int</span>(bb);</span><br><span class="line">            b=b+<span class="built_in">int</span>(bb);</span><br><span class="line">            c=<span class="built_in">float</span>(a/b);</span><br><span class="line">            print(<span class="string">&quot;现在平均学分绩是：%f&quot;</span> % c);</span><br><span class="line">    print(<span class="string">&quot;最后的平均学分绩是：%f&quot;</span> % c);</span><br><span class="line">    print(<span class="string">&quot;最后的学业表现成绩：%f&quot;</span> % <span class="built_in">float</span>(<span class="number">0.8</span>*c))</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="刷学习通学习次数"><a href="#刷学习通学习次数" class="headerlink" title="刷学习通学习次数"></a>刷学习通学习次数</h2><p> F12 —&gt;终端模式</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> current = location.href; </span><br><span class="line"><span class="keyword">var</span> timeout=<span class="number">30</span>;</span><br><span class="line"><span class="keyword">if</span>(timeout&gt; <span class="number">0</span>)</span><br><span class="line">&#123; </span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="string">&#x27;reload()&#x27;</span>, <span class="number">1000</span> * timeout); </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123; location.replace(current); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reload</span>(<span class="params"></span>) </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="string">&#x27;reload()&#x27;</span>, <span class="number">1000</span> * timeout); </span><br><span class="line">    <span class="keyword">var</span> fr4me =<span class="string">&#x27;&lt;frameset cols=\&#x27;*\&#x27;&gt;\n&lt;frame src=\&#x27;&#x27;</span> + current +<span class="string">&#x27;\&#x27; /&gt;&#x27;</span>; </span><br><span class="line">    fr4me +=<span class="string">&#x27;&lt;/frameset&gt;&#x27;</span>; </span><br><span class="line">    <span class="keyword">with</span>(<span class="built_in">document</span>)</span><br><span class="line">	&#123; </span><br><span class="line">        write(fr4me); </span><br><span class="line">     	<span class="keyword">void</span>(close()); </span><br><span class="line">    &#125;; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="VNC乱码"><a href="#VNC乱码" class="headerlink" title="VNC乱码"></a>VNC乱码</h2><p>解决Linux Deploy 中VNC连接 LXDE桌面乱码：</p>
+<p>sudo apt-get install fonts-wqy-zenhe</p>
+<h2 id="类安卓原生"><a href="#类安卓原生" class="headerlink" title="类安卓原生"></a>类安卓原生</h2><p>AospExtended ROM：<a target="_blank" rel="noopener" href="https://downloads.aospextended.com/">https://downloads.aospextended.com/</a></p>
+<p>Pixel Experience ：<a target="_blank" rel="noopener" href="https://download.pixelexperience.org/">https://download.pixelexperience.org/</a></p>
+<p>LineageOS ：<a target="_blank" rel="noopener" href="https://download.lineageos.org/">https://download.lineageos.org/</a></p>
+<p>Resurrection Remix OS ：<a target="_blank" rel="noopener" href="https://www.resurrectionremix.com/">https://www.resurrectionremix.com/</a></p>
+<p>魔趣：<a target="_blank" rel="noopener" href="https://download.mokeedev.com/">https://download.mokeedev.com/</a></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux"><span class="toc-text">linux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86"><span class="toc-text">系统代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#alpine%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE"><span class="toc-text">alpine网卡配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clash-Linux"><span class="toc-text">Clash-Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%A1%E6%9C%89%E6%89%BE%E5%88%B0ifconfig%E5%91%BD%E4%BB%A4"><span class="toc-text">没有找到ifconfig命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-text">服务进程管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-text">关闭占用端口的进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache%E9%85%8D%E7%BD%AEuserdir"><span class="toc-text">Apache配置userdir</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90%E5%90%8E%E6%9B%B4%E6%96%B0%E5%A4%B1%E8%B4%A5"><span class="toc-text">换源后更新失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8F%91%E8%A1%8C%E4%BF%A1%E6%81%AF"><span class="toc-text">查看发行信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E4%B9%B1%E7%A0%81"><span class="toc-text">ssh乱码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#windows"><span class="toc-text">windows</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VsCode%E6%8A%A5%E9%94%99"><span class="toc-text">VsCode报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BB%A3%E7%90%86"><span class="toc-text">共享局域网代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VM-Workstation-%E6%8A%A5%E9%94%99"><span class="toc-text">VM Workstation 报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">查看系统信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%88%B0%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9F"><span class="toc-text">更新到最新系统</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BB%91%E8%8B%B9%E6%9E%9C"><span class="toc-text">黑苹果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BigSur%E8%BF%9B%E5%85%A5%E5%BC%95%E5%AF%BC%E5%90%8E%E8%AF%BB%E5%8F%96%E4%B8%8D%E5%88%B0%E5%86%85%E7%BD%AE%E7%A1%AC%E7%9B%98"><span class="toc-text">BigSur进入引导后读取不到内置硬盘</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BB%91%E7%BE%A4%E6%99%96"><span class="toc-text">黑群晖</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%AB%99"><span class="toc-text">网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XPEnoboot"><span class="toc-text">XPEnoboot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6"><span class="toc-text">镜像文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E8%BF%94%E5%9B%9E%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%87%BD%E6%95%B0"><span class="toc-text">JS返回随机数函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E8%AE%A1%E7%AE%97%E5%AD%A6%E5%88%86%E7%BB%A9"><span class="toc-text">python计算学分绩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E5%AD%A6%E4%B9%A0%E9%80%9A%E5%AD%A6%E4%B9%A0%E6%AC%A1%E6%95%B0"><span class="toc-text">刷学习通学习次数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VNC%E4%B9%B1%E7%A0%81"><span class="toc-text">VNC乱码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F"><span class="toc-text">类安卓原生</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By null</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="/blog/js/tw_cn.js"></script><script src="/blog/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SQLServer | 博客</title><meta name="keywords" content="SQL Server"><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基础知识语句 &#x2F;****************************************************-- 基本操作*****************************************************&#x2F;-- 创建数据库CREATE  DATABASE StuData------ 可以以默认方式创建数据库，也可以使用参数创建数据库，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLServer">
+<meta property="og:url" content="https://github.com/wenoif/sqlserver.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="基础知识语句 &#x2F;****************************************************-- 基本操作*****************************************************&#x2F;-- 创建数据库CREATE  DATABASE StuData------ 可以以默认方式创建数据库，也可以使用参数创建数据库，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-12-17T10:15:01.000Z">
+<meta property="article:modified_time" content="2021-09-06T15:50:07.276Z">
+<meta property="article:tag" content="SQL Server">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg"><link rel="canonical" href="https://github.com/wenoif/sqlserver"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-06 23:50:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/main.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">SQLServer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-12-17T10:15:01.000Z" title="undefined 2020-12-17 18:15:01">2020-12-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">12k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>50分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"> <a id="more"></a>
+
+
+<p>基础知识语句</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 基本操作</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">-- 创建数据库</span><br><span class="line">CREATE  DATABASE StuData</span><br><span class="line">------ 可以以默认方式创建数据库，也可以使用参数创建数据库，如下：</span><br><span class="line">&#x2F;*</span><br><span class="line">create database MyDatabaseOne</span><br><span class="line">------------ 数据库名</span><br><span class="line">on primary</span><br><span class="line">------------ primary关键字指定主要数据文件，若没有primary关键字，泽第一个文件成为主要数据文件。</span><br><span class="line">(</span><br><span class="line">    name &#x3D; &#39;MyDatabaseOne&#39;,</span><br><span class="line">------------ 逻辑文件名</span><br><span class="line"></span><br><span class="line">    filename &#x3D; &#39;c:\test\MyDatabaseOne.mdf&#39;,</span><br><span class="line">------------ 物理文件名</span><br><span class="line"></span><br><span class="line">    size&#x3D;5MB,</span><br><span class="line">------------ 大小</span><br><span class="line"></span><br><span class="line">    maxsize&#x3D;150MB,</span><br><span class="line">------------ 可增长到的最大大小</span><br><span class="line"></span><br><span class="line">    filegrowth&#x3D;20%</span><br><span class="line">------------ 增长比例</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line">log on</span><br><span class="line">------------ 日志文件</span><br><span class="line">(</span><br><span class="line">    name &#x3D; &#39;MyDatabaseOne_log&#39;,</span><br><span class="line">    filename &#x3D; &#39;c:\test\MyDatabaseOne_log.ldf&#39;,</span><br><span class="line">    size &#x3D; 5mb,</span><br><span class="line">    maxsize&#x3D;150MB,</span><br><span class="line">    filegrowth&#x3D;20%</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 使用数据库</span><br><span class="line">USE StuData</span><br><span class="line"></span><br><span class="line">-- 删除库</span><br><span class="line">DROP DATABASE StuData</span><br><span class="line"></span><br><span class="line">-- 创建班级表</span><br><span class="line">CREATE TABLE class(</span><br><span class="line">------ 班级号</span><br><span class="line">num INT NOT NULL PRIMARY KEY,</span><br><span class="line">------ 专业</span><br><span class="line">major CHAR(30)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">-- 创建信息表</span><br><span class="line">CREATE TABLE info(</span><br><span class="line"></span><br><span class="line">------ 学号；设置主键约束，一个表中只能由一个主键约束，且主键约束中的列不接受空值。</span><br><span class="line">id INT NOT NULL PRIMARY KEY,</span><br><span class="line"></span><br><span class="line">------ 班级；设置外键约束，也可以引用同一数据库的表中的列 或 同一表中的列</span><br><span class="line">class INT NOT NULL REFERENCES class(num),</span><br><span class="line"></span><br><span class="line">------ 姓名；设置唯一约束，与主键不同的是sql server允许一个表创建多个唯一约束</span><br><span class="line">name CHAR(20) UNIQUE,</span><br><span class="line"></span><br><span class="line">------ 地址；设置空值约束</span><br><span class="line">addr CHAR(10) NOT NULL,</span><br><span class="line"></span><br><span class="line">------ 性别；设置CHECK约束</span><br><span class="line">sex CHAR(2) CHECK(sex&#x3D;&#39;男&#39;or sex&#x3D;&#39;女&#39;),</span><br><span class="line"></span><br><span class="line">------ 微信；设置默认值约束</span><br><span class="line">wechat CHAR(32) DEFAULT &#39;123456&#39;,</span><br><span class="line"></span><br><span class="line">------ 测试字段</span><br><span class="line">test1 CHAR(20) NULL,</span><br><span class="line">test2 INT NULL,</span><br><span class="line">test3 INT NULL,</span><br><span class="line">------ 设置多个主键，主键组合必须唯一：CONSTRAINT 测试主键 PRIMARY KEY(id,class)</span><br><span class="line">------ 设置外键：ONSTRAINT 测试外键 REFERENCES class(num)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">-- 修改表的某一列</span><br><span class="line">ALTER TABLE info ALTER COLUMN wechat CHAR(20)</span><br><span class="line"></span><br><span class="line">-- 在表中添加列</span><br><span class="line">ALTER TABLE info ADD email CHAR(32) DEFAULT &#39;null@null.com&#39;</span><br><span class="line"></span><br><span class="line">-- 删除列,删除之前删除约束</span><br><span class="line">ALTER TABLE info DROP CONSTRAINT DF__info__email__3C69FB99</span><br><span class="line">ALTER TABLE info DROP COLUMN email</span><br><span class="line"></span><br><span class="line">-- 重命名表</span><br><span class="line">sp_rename &#39;info&#39;,&#39;stuinfo&#39;</span><br><span class="line"></span><br><span class="line">-- 查看表</span><br><span class="line">sp_help stuinfo</span><br><span class="line">SELECT * FROM stuinfo</span><br><span class="line"></span><br><span class="line">-- 删除表</span><br><span class="line">DROP TABLE stuinfo</span><br><span class="line">DROP TABLE class</span><br><span class="line">DROP TABLE info</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 数据的增删改</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">-- 数据插入</span><br><span class="line">INSERT INTO class(num,major) VALUES(1,&#39;电子商务&#39;),(2,&#39;物流管理&#39;),(3,&#39;土木工程&#39;),(4,&#39;网络技术&#39;),(5,&#39;网络安全&#39;),(6,&#39;无人汽车&#39;),(98,&#39;化学化工&#39;),(99,&#39;智能制造&#39;)</span><br><span class="line">INSERT INTO stuinfo(id,class,name,addr,sex)VALUES(001,1,&#39;张三&#39;,&#39;北京&#39;,&#39;男&#39;),(002,2,&#39;李四&#39;,&#39;北京&#39;,&#39;女&#39;)</span><br><span class="line">INSERT stuinfo VALUES</span><br><span class="line">(003,2,&#39;杨柳&#39;,&#39;北京&#39;,&#39;女&#39;,&#39;wx6666&#39;,null,null,null),</span><br><span class="line">(004,1,&#39;赵东&#39;,&#39;山东&#39;,&#39;男&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(005,3,&#39;王蒙&#39;,&#39;上海&#39;,&#39;男&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(006,5,&#39;赵坤&#39;,&#39;北京&#39;,&#39;女&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(007,4,&#39;杨云&#39;,&#39;山东&#39;,&#39;女&#39;,&#39;wx6666&#39;,null,null,null),</span><br><span class="line">(008,5,&#39;赵洋&#39;,&#39;上海&#39;,&#39;女&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(009,4,&#39;王潇潇&#39;,&#39;上海&#39;,&#39;男&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(010,1,&#39;杨紫&#39;,&#39;山东&#39;,&#39;女&#39;,&#39;wx6666&#39;,null,null,null),</span><br><span class="line">(011,1,&#39;赵龍&#39;,&#39;上海&#39;,&#39;女&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(012,5,&#39;王娜娜&#39;,&#39;陕西&#39;,&#39;女&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(013,3,&#39;陈飏&#39;,&#39;山西&#39;,&#39;男&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(014,5,&#39;王晓霞&#39;,&#39;河北&#39;,&#39;女&#39;,&#39;wx6666&#39;,null,null,null),</span><br><span class="line">(015,1,&#39;刘佳&#39;,&#39;深圳&#39;,&#39;女&#39;,&#39;wx8888&#39;,null,null,null),</span><br><span class="line">(016,3,&#39;王菲菲&#39;,&#39;上海&#39;,&#39;女&#39;,&#39;wx8888&#39;,null,null,null)</span><br><span class="line"></span><br><span class="line">-- 查看表内数据</span><br><span class="line">SELECT * FROM stuinfo</span><br><span class="line"></span><br><span class="line">-- 修改指定列</span><br><span class="line">UPDATE stuinfo SET name&#x3D;&#39;陈雪&#39; WHERE id&#x3D;004</span><br><span class="line"></span><br><span class="line">-- 替换非空微信</span><br><span class="line">UPDATE stuinfo SET wechat&#x3D;&#39;notnull&#39; WHERE wechat IS NOT NULL</span><br><span class="line"></span><br><span class="line">-- 删除所有记录</span><br><span class="line">DELETE FROM stuinfo</span><br><span class="line">DELETE FROM class</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 六种约束</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line">-- 1.允许空值约束</span><br><span class="line">ALTER TABLE stuinfo ALTER COLUMN test1 char(20) NOT NULL</span><br><span class="line"></span><br><span class="line">-- 2.DEFAULT约束,定义格式：DEFAULT 默认值</span><br><span class="line">------ 添加</span><br><span class="line">ALTER TABLE stuinfo ADD CONSTRAINT test1默认约束 DEFAULT &#39;test1&#39; FOR test1</span><br><span class="line"></span><br><span class="line">------ 测试</span><br><span class="line">INSERT INTO stuinfo(id,class,name,addr,sex)VALUES(005,1,&#39;测试1&#39;,&#39;北京&#39;,&#39;男&#39;)</span><br><span class="line">SELECT * FROM stuinfo</span><br><span class="line"></span><br><span class="line">------ 删除</span><br><span class="line">ALTER TABLE stuinfo DROP CONSTRAINT test1默认约束</span><br><span class="line"></span><br><span class="line">-- 3.CHECK约束,定义格式：CONSTRAINT 约束名 CHECK(表达式)</span><br><span class="line">------ 添加</span><br><span class="line">ALTER TABLE stuinfo ALTER COLUMN test2 char(2)</span><br><span class="line">ALTER TABLE stuinfo ADD CONSTRAINT test2限制性别  CHECK (test2&#x3D;&#39;男&#39;or test2&#x3D;&#39;女&#39;)</span><br><span class="line"></span><br><span class="line">------ 测试</span><br><span class="line">INSERT INTO stuinfo(id,class,name,addr,sex,test2)VALUES(006,1,&#39;测试2-&#39;,&#39;北京&#39;,&#39;男&#39;,&#39;男&#39;)</span><br><span class="line">SELECT * FROM stuinfo</span><br><span class="line"></span><br><span class="line">------ 删除</span><br><span class="line">ALTER TABLE stuinfo DROP CONSTRAINT test2限制性别</span><br><span class="line"></span><br><span class="line">-- 4.PRIMARY KEY主键约束，定义格式：CONSTRAINT 约束名 PRIMARY KEY (列或列的组合)</span><br><span class="line">------ 添加和删除</span><br><span class="line">ALTER TABLE stuinfo ADD CONSTRAINT 主键约束 PRIMARY KEY(id)</span><br><span class="line">ALTER TABLE stuinfo DROP CONSTRAINT 主键约束</span><br><span class="line"></span><br><span class="line">-- 5.FOREIGN KEY外键约束，定义格式：CONSTRAINT 约束名 FOREIGN KEY (列) REFERENCES 被引用表（列）</span><br><span class="line">------ 添加和删除</span><br><span class="line">ALTER TABLE stuinfo ADD CONSTRAINT 外键约束 FOREIGN KEY (id) REFERENCES class(num)</span><br><span class="line">ALTER TABLE stuinfo DROP CONSTRAINT 外键约束</span><br><span class="line"></span><br><span class="line">-- 6.UNIQUE唯一约束，定义格式：CONSTRAINT 约束名 UNIQUE  (列或列的组合)</span><br><span class="line">------ 添加和删除</span><br><span class="line">ALTER TABLE stuinfo ADD CONSTRAINT 唯一约束 UNIQUE(test3)</span><br><span class="line">ALTER TABLE stuinfo DROP CONSTRAINT 唯一约束</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 查询操作</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">-- 查询全部</span><br><span class="line">SELECT * FROM stuinfo</span><br><span class="line"></span><br><span class="line">-- 查询指定列、别名</span><br><span class="line">SELECT name AS 姓名,sex AS 性别 FROM stuinfo</span><br><span class="line"></span><br><span class="line">-- 进行运算</span><br><span class="line">SELECT class*5 AS &#39;num*5&#39; FROM stuinfo</span><br><span class="line"></span><br><span class="line">-- WHERE:&lt;,&lt;&#x3D;,&gt;,&gt;&#x3D;,等于&#x3D;,不等于&lt;&gt;或者!&#x3D;,指定值BETWEEN;IN 指定记录;LIKE 模式匹配中使用</span><br><span class="line">SELECT * FROM stuinfo WHERE id&lt;3</span><br><span class="line">SELECT * FROM stuinfo WHERE id&#x3D;3</span><br><span class="line">SELECT * FROM stuinfo WHERE id!&#x3D;3</span><br><span class="line">SELECT * FROM stuinfo WHERE id&lt;&gt;3</span><br><span class="line">SELECT * FROM stuinfo WHERE id&gt;&#x3D;3</span><br><span class="line"></span><br><span class="line">------ BETWEEN 2 AND 5:包括2和5</span><br><span class="line">SELECT * FROM stuinfo WHERE id BETWEEN 2 AND 5</span><br><span class="line">SELECT * FROM stuinfo WHERE id NOT BETWEEN 2 AND 5</span><br><span class="line"></span><br><span class="line">------ IN相当于OR</span><br><span class="line">SELECT * FROM stuinfo WHERE addr IN(&#39;北京&#39;,&#39;上海&#39;,&#39;浙江&#39;)</span><br><span class="line">SELECT * FROM stuinfo WHERE addr NOT IN(&#39;北京&#39;,&#39;上海&#39;,&#39;浙江&#39;)</span><br><span class="line"></span><br><span class="line">------ LIKE：如果需要匹配到百分号或下划线可以使用“\”进行转义</span><br><span class="line">------------ 下划线_匹配单个字符；</span><br><span class="line">SELECT * FROM stuinfo WHERE name LIKE &#39;赵_&#39;</span><br><span class="line">------------ 百分号%匹配任意长度(包括0)的字符串;</span><br><span class="line">SELECT * FROM stuinfo WHERE name LIKE &#39;王%&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- DISTINCT 消除重复行</span><br><span class="line">SELECT class FROM stuinfo WHERE class&#x3D;2</span><br><span class="line">SELECT DISTINCT class FROM stuinfo WHERE class&#x3D;2</span><br><span class="line"></span><br><span class="line">-- TOP 前N行</span><br><span class="line">SELECT * FROM stuinfo WHERE sex&#x3D;&#39;女&#39;</span><br><span class="line">SELECT TOP 2 * FROM stuinfo WHERE sex&#x3D;&#39;女&#39;</span><br><span class="line"></span><br><span class="line">-- ORDER BY 排序</span><br><span class="line">------ 默认正序</span><br><span class="line">SELECT * FROM stuinfo ORDER BY addr</span><br><span class="line"></span><br><span class="line">------ 正序ASC</span><br><span class="line">SELECT * FROM stuinfo ORDER BY addr ASC</span><br><span class="line"></span><br><span class="line">------ 倒序DESC</span><br><span class="line">SELECT * FROM stuinfo ORDER BY addr DESC</span><br><span class="line"></span><br><span class="line">-- GROUP BY 分组</span><br><span class="line">------聚合函数：平均AVG、个数COUNT、</span><br><span class="line">------  		总和SUM、最大值MAX、最小值MIN、</span><br><span class="line">------			不重复输入值数目DISINCTCOUNT、</span><br><span class="line">------			所有值的标准方差STDEV、所有值的总体标准偏差SIDEVP、所有值的方差VAR、所有值的总体方差VARP</span><br><span class="line"></span><br><span class="line">------ 按照性别分组</span><br><span class="line">SELECT sex AS 性别,COUNT(*) AS 人数 FROM stuinfo GROUP BY sex</span><br><span class="line"></span><br><span class="line">------ 按照地址分组</span><br><span class="line">SELECT addr AS 地区,COUNT(*) AS 人数 FROM stuinfo GROUP BY addr</span><br><span class="line"></span><br><span class="line">------ HAVING筛选作用于组、WHEWE作用于基本表或视图</span><br><span class="line">------------ 筛选人数大于1的地区</span><br><span class="line">SELECT addr AS 地区,COUNT(*) AS 人数 FROM stuinfo GROUP BY addr HAVING COUNT(*)&gt;1</span><br><span class="line"></span><br><span class="line">------ CUBE显示所选列中值的所有组合的聚合；ROLLUP显示所选列中值的某一层次结构的聚合</span><br><span class="line">SELECT addr AS 地区,COUNT(*) AS 人数 FROM stuinfo GROUP BY addr WITH CUBE</span><br><span class="line">SELECT addr AS 地区,COUNT(*) AS 人数 FROM stuinfo GROUP BY addr WITH ROLLUP</span><br><span class="line"></span><br><span class="line">-- 分页和排名：略</span><br><span class="line"></span><br><span class="line">-- 连接查询</span><br><span class="line">---内连接</span><br><span class="line">------ 内连接是用比较运算符比较要连接列的值的连接。</span><br><span class="line">------ 格式为：[&lt;表名1&gt;.]&lt;列名1&gt; &lt;比较运算符&gt; [&lt;表名2&gt;,]&lt;列名2&gt;</span><br><span class="line">------ 内连接可在FROM或WHERE子句中指定，使用WHERE的内连接称为旧式内连接</span><br><span class="line">------ 获取序号班级和学号相等的数据</span><br><span class="line">SELECT stuinfo.name AS 姓名,class.major AS 专业,class.num AS 班级,stuinfo.id AS 学号 FROM stuinfo JOIN class ON class.num&#x3D;stuinfo.id</span><br><span class="line">SELECT stuinfo.name AS 姓名,class.major AS 专业,class.num AS 班级,stuinfo.id AS 学号 FROM  stuinfo,class WHERE class.num&#x3D;stuinfo.id</span><br><span class="line"></span><br><span class="line">---外连接：包括左连接、右连接、左外连接、右外连接</span><br><span class="line">------ 左连接：包括左表所有行，不包括右表不满足条件的行。</span><br><span class="line">------ 格式：FROM [&lt;表名1&gt;.]&lt;列名1&gt; LEFT JOIN [&lt;表名2&gt;,]&lt;列名2&gt; ON &lt;条件&gt;</span><br><span class="line">------ 查找地址为北京的信息</span><br><span class="line">SELECT s1.name AS 姓名,s1.addr AS 地址,s1.class AS 班级,s1.id AS 学号 FROM stuinfo AS s1 LEFT JOIN stuinfo AS s2 ON s1.name&#x3D;s2.name AND s1.addr IN (&#39;北京&#39;) ORDER BY s1.name DESC</span><br><span class="line">SELECT s1.name AS 姓名,s1.addr AS 地址,s1.class AS 班级,s1.id AS 学号 FROM stuinfo AS s2 LEFT JOIN stuinfo AS s1 ON s1.name&#x3D;s2.name AND s1.addr IN (&#39;北京&#39;) ORDER BY s1.name DESC</span><br><span class="line">SELECT s1.name AS 姓名,s1.addr AS 地址,s1.class AS 班级,s1.id AS 学号 FROM stuinfo AS s2 , stuinfo AS s1 WHERE s1.name&#x3D;s2.name AND s1.addr IN (&#39;北京&#39;) ORDER BY s1.name DESC</span><br><span class="line"></span><br><span class="line">------ 右连接：包括左表所有行，不包括右表不满足条件的行。</span><br><span class="line">------ 格式：FROM [&lt;表名1&gt;.]&lt;列名1&gt; RIGHT JOIN [&lt;表名2&gt;,]&lt;列名2&gt; ON &lt;条件&gt;</span><br><span class="line">------ 查找地址为北京的信息</span><br><span class="line">SELECT s1.name AS 姓名,s1.addr AS 地址,s1.class AS 班级,s1.id AS 学号 FROM stuinfo AS s1 RIGHT JOIN stuinfo AS s2 ON s1.name&#x3D;s2.name AND s1.addr IN (&#39;北京&#39;) ORDER BY s1.name DESC</span><br><span class="line">SELECT s1.name AS 姓名,s1.addr AS 地址,s1.class AS 班级,s1.id AS 学号 FROM stuinfo AS s2 RIGHT JOIN stuinfo AS s1 ON s1.name&#x3D;s2.name AND s1.addr IN (&#39;北京&#39;) ORDER BY s1.name DESC</span><br><span class="line">SELECT s1.name AS 姓名,s1.addr AS 地址,s1.class AS 班级,s1.id AS 学号 FROM stuinfo AS s2 , stuinfo AS s1 WHERE s1.name&#x3D;s2.name AND s1.addr IN (&#39;北京&#39;) ORDER BY s1.name DESC</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------ 左外连接：包括左表所有行，不包括右表不满足条件的行。</span><br><span class="line">------ 格式：FROM [&lt;表名1&gt;.]&lt;列名1&gt; LEFT OUTER JOIN [&lt;表名2&gt;,]&lt;列名2&gt; ON &lt;条件&gt;</span><br><span class="line">------ 查找id&lt;8</span><br><span class="line">SELECT stuinfo.name AS 姓名,class.major AS 专业,class.num AS 班级,stuinfo.id AS 学号 FROM stuinfo LEFT OUTER JOIN class ON class.num&#x3D;stuinfo.class AND stuinfo.id&lt;8</span><br><span class="line">SELECT stuinfo.name AS 姓名,class.major AS 专业,class.num AS 班级,stuinfo.id AS 学号 FROM class LEFT OUTER JOIN stuinfo ON class.num&#x3D;stuinfo.class AND stuinfo.id&lt;8</span><br><span class="line">SELECT stuinfo.name AS 姓名,class.major AS 专业,class.num AS 班级,stuinfo.id AS 学号 FROM stuinfo,class WHERE class.num&#x3D;stuinfo.class AND stuinfo.id&lt;8</span><br><span class="line"></span><br><span class="line">------ 右外连接：包括左表所有行，不包括右表不满足条件的行。</span><br><span class="line">------ 格式：FROM [&lt;表名1&gt;.]&lt;列名1&gt; RIGHT OUTER JOIN [&lt;表名2&gt;,]&lt;列名2&gt; ON &lt;条件&gt;</span><br><span class="line">------ 查找id&lt;8</span><br><span class="line">SELECT stuinfo.name AS 姓名,class.major AS 专业,class.num AS 班级,stuinfo.id AS 学号 FROM stuinfo RIGHT OUTER JOIN class ON class.num&#x3D;stuinfo.class AND stuinfo.id&lt;8</span><br><span class="line">SELECT stuinfo.name AS 姓名,class.major AS 专业,class.num AS 班级,stuinfo.id AS 学号 FROM class RIGHT OUTER JOIN stuinfo ON class.num&#x3D;stuinfo.class AND stuinfo.id&lt;8</span><br><span class="line">SELECT stuinfo.name AS 姓名,class.major AS 专业,class.num AS 班级,stuinfo.id AS 学号 FROM stuinfo,class WHERE class.num&#x3D;stuinfo.class AND stuinfo.id&lt;8</span><br><span class="line"></span><br><span class="line">--- 交叉连接，即卡氏积连接，是不带连接谓词的连接</span><br><span class="line">SELECT * FROM class CROSS JOIN stuinfo</span><br><span class="line">SELECT * FROM stuinfo CROSS JOIN class</span><br><span class="line">SELECT class.*,stuinfo.* FROM class CROSS JOIN stuinfo</span><br><span class="line">SELECT stuinfo.*,class.* FROM class CROSS JOIN stuinfo</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 子查询</span><br><span class="line">------ 一个SELECT-FROM-WHERE称为一个查询块，查询块的嵌套称为子查询，可以嵌套在WHERE子句或者HAVING子句中。</span><br><span class="line">------ 通过比较运算符引入的子查询的选择列表只能包括一个表达式或列的名称</span><br><span class="line">------ 外部查询WHERE子句包括某列名，则该子句必须于子查询选择列表中的该列兼容</span><br><span class="line">------ 子查询选择列表不允许出现ntext、text、image数据类型</span><br><span class="line">------ 由子查询创建的视图不能更新</span><br><span class="line"></span><br><span class="line">------ 1.使用IN 或NOT IN的子查询</span><br><span class="line">------------ 查询网络技术专业的成员信息</span><br><span class="line">SELECT * FROM stuinfo WHERE class IN (SELECT num FROM class WHERE major&#x3D;&#39;网络技术&#39;)</span><br><span class="line"></span><br><span class="line">------------ 查询网络技术专业的人数</span><br><span class="line">SELECT COUNT(*) AS 人数 FROM stuinfo GROUP BY class HAVING class IN (SELECT num FROM class WHERE major&#x3D;&#39;网络技术&#39;)</span><br><span class="line"></span><br><span class="line">------ 2.使用比较运算符的子查询</span><br><span class="line">------------ 查询不是网络技术专业的成员信息</span><br><span class="line">SELECT * FROM stuinfo WHERE class !&#x3D; (SELECT num FROM class WHERE major&#x3D;&#39;网络技术&#39;)</span><br><span class="line"></span><br><span class="line">------ 3.使用ANY或ALL的子查询,必须同时使用比较运算符，子查询必须返回单值时</span><br><span class="line">------------ 查询不等于子查询返回数值的所有信息</span><br><span class="line">SELECT * FROM stuinfo WHERE id !&#x3D; ALL(SELECT num FROM class)</span><br><span class="line"></span><br><span class="line">------ 4.使用EXISTS查询，存在，不返回实际数据，只返回True或者False</span><br><span class="line">------ 5.抽取数据到另外一个表的子查询</span><br><span class="line">------ 6.INSERT语句中的子查询</span><br><span class="line">------ 7.UPDATE语句中的子查询</span><br><span class="line">------ 8.删除语句中的子查询</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 联合查询</span><br><span class="line">------ 将多个查询结果合并为一个结果</span><br><span class="line">------ 并UNION；交INTERSECT；差MINUS</span><br><span class="line">------ 使用UNION自动将结果去重，使用ALL则不会去重</span><br><span class="line"></span><br><span class="line">------------ 查询学号小于5</span><br><span class="line">SELECT * FROM stuinfo WHERE id&lt;5</span><br><span class="line"></span><br><span class="line">------------ 查询学号小于8</span><br><span class="line">SELECT * FROM stuinfo WHERE id&lt;8</span><br><span class="line"></span><br><span class="line">------------ 使用UNION联合去重</span><br><span class="line">SELECT * FROM stuinfo WHERE id&lt;5 UNION SELECT * FROM stuinfo WHERE id&lt;8</span><br><span class="line"></span><br><span class="line">------------ 使用INTERSECT求交集</span><br><span class="line">SELECT * FROM stuinfo WHERE id&lt;5 INTERSECT SELECT * FROM stuinfo WHERE id&lt;8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 交叉表查询，将表值表达式转换为另一个表</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 视图操作</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">视图创建格式:</span><br><span class="line">CREATE VIEW 视图名 [(列名[,....n])]</span><br><span class="line">[WITH 视图属性]</span><br><span class="line">AS</span><br><span class="line">查询语句</span><br><span class="line">[WITH CHECK OPTION]</span><br><span class="line"></span><br><span class="line">视图属性：文本加密encryption;绑定到表schemabinding;引用视图元数据view_metadata</span><br><span class="line">WITH CHECK OPTION表示对视图进行增删改的行要满足视图定义中的子查询条件表达式</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">-- 创建视图</span><br><span class="line">CREATE VIEW NameAndMajor</span><br><span class="line">WITH ENCRYPTION</span><br><span class="line">AS</span><br><span class="line">SELECT * FROM stuinfo;</span><br><span class="line"></span><br><span class="line">-- 查看视图</span><br><span class="line">SELECT * FROM NameAndMajor</span><br><span class="line"></span><br><span class="line">-- 测试数据</span><br><span class="line">INSERT INTO stuinfo(id,class,name,addr,sex)VALUES(1001,1,&#39;视图测试数据&#39;,&#39;北京&#39;,&#39;男&#39;)</span><br><span class="line"></span><br><span class="line">-- 删除视图</span><br><span class="line">DROP VIEW NameAndMajor</span><br><span class="line"></span><br><span class="line">-- 修改视图</span><br><span class="line">ALTER VIEW NameAndMajor</span><br><span class="line">WITH ENCRYPTION</span><br><span class="line">AS</span><br><span class="line">SELECT * FROM class;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 索引操作</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">一般先创建聚集索引，再创建非聚集索引。创建聚集索引会改变表中行的排序，故优先创建。</span><br><span class="line"></span><br><span class="line">聚集索引：对表中数据重新排列然后保存在磁盘上，查询快，但是占用空间约为表占用空间的1.2倍。【一个表只能由一个聚集索引】</span><br><span class="line"></span><br><span class="line">非聚集索引：与表中数据分离，存储索引行。</span><br><span class="line">------------索引行包括非聚集索引键值和一个或多个指向该值的数据行的行定位器。</span><br><span class="line">------------------行定位器：存在聚集索引则为聚集索引键值；不存在则为行的磁盘地址</span><br><span class="line"></span><br><span class="line">唯一索引：唯一索引不允许两行具有相同的索引值，唯一索引可以是聚集索引 也可以是 非聚集索引</span><br><span class="line">其他索引：包含列索引、索引视图、全文索引、空间索引、筛选索引、XML索引</span><br><span class="line"></span><br><span class="line">创建索引格式(也可以在创建或修改表的时候创建索引)：</span><br><span class="line">CREATE [唯一索引UNION | 聚集索引CLUSTERED | 非聚集索引NONCLUSTERED]</span><br><span class="line">INDEX 索引名</span><br><span class="line">ON	&#123;表|视图&#125;	(列[正序ASC | 逆序DESC][,.....n])</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">-- 创建</span><br><span class="line">-- 查看</span><br><span class="line">-- 修改</span><br><span class="line">-- 删除</span><br><span class="line">-- 重命名</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 存储过程</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line">&#x2F;*</span><br><span class="line">GO不是T-SQL语句，是sqlcmd和osql以及SSMS识别的命令，GO和T-SQL语句不能在同一行。</span><br><span class="line"></span><br><span class="line">标识符：分为常规标识符和分割标识符（使用方括号括起来，可以使用保留字、空格等）</span><br><span class="line"></span><br><span class="line">批处理：多条语句一起执行</span><br><span class="line"></span><br><span class="line">输出语句：</span><br><span class="line">------  PRINT &lt;字符串&gt;</span><br><span class="line">------  PRISERROR(msg_id|msg_str,severity,state)返回用户定义的错误信息</span><br><span class="line"></span><br><span class="line">全局变量：由系统定义和维护，名称以@@开头；不可赋值、不可由用户定义</span><br><span class="line"></span><br><span class="line">局部变量：</span><br><span class="line">------  由用户子句定义赋值，名称以@开头；限制在GO之前；</span><br><span class="line">------  声明：DECLARE @test1 INT,@test2 FLOAT 初始化为NULL</span><br><span class="line">------  赋值：SET @test1&#x3D;EXPRESSION 或者 SELECT @test2 &#x3D; EXPRESSION;EXPRESSION可以是变量、常量、函数、列名、子查询等</span><br><span class="line"></span><br><span class="line">运算符：</span><br><span class="line">------  算术、赋值、位、比较</span><br><span class="line">------  逻辑（ALL,AND,ANY,BETWEEN,EXISTE,IN,LIKE,NOT,OR,SOME）</span><br><span class="line">------  字符串串联运算符（+）</span><br><span class="line">------  一元运算符（正+负-位反~）</span><br><span class="line"></span><br><span class="line">流程控制</span><br><span class="line">------  顺序：BEGIN &#123;SQL语句 | 语句块&#125; END；用在IF、WHILE等语句中</span><br><span class="line">------  分支：IF &lt;布尔表达式&gt; &#123;SQL语句 | 语句块&#125;  [ELSE &#123;SQL语句 | 语句块&#125; ]</span><br><span class="line">------  循环：WHILE &lt;布尔表达式&gt;&#123;SQL语句 | 语句块&#125;[BREAK]&#123;SQL语句 | 语句块&#125;[CONTINUE]&#123;SQL语句 | 语句块&#125;</span><br><span class="line">------  错误处理:捕获异常xxxxxxxxxxxxx</span><br><span class="line">------  其他：RETURN返回；waitfor指定时间前；</span><br><span class="line">------  开关：CASE 表达式 WHEN 简单表达式 THEN 结果表达式 [....n] [ELSE 结果表达式] END</span><br><span class="line"></span><br><span class="line">常用函数：xxxxxxxxxxxxx</span><br><span class="line"></span><br><span class="line">创建存储过程格式：</span><br><span class="line">CREATE PROC[EDURE] 存储过程名</span><br><span class="line">[</span><br><span class="line">&#123;@参数1 数据类型][&#x3D;默认值] [OUTPUT]</span><br><span class="line">,......</span><br><span class="line">&#123;@参数n 数据类型][&#x3D;默认值] [OUTPUT]</span><br><span class="line">]</span><br><span class="line">AS</span><br><span class="line">SQL语句</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">执行存储过程：</span><br><span class="line">[EXEC] 存储过程名 参数</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------ 创建指定学号返回信息的存储过程</span><br><span class="line">CREATE PROC getinfo</span><br><span class="line">@xuehao int</span><br><span class="line">AS</span><br><span class="line">SELECT * FROM stuinfo WHERE id&#x3D;@xuehao</span><br><span class="line"></span><br><span class="line">------------ 调用</span><br><span class="line">EXEC getinfo 5</span><br><span class="line"></span><br><span class="line">------------ 查看</span><br><span class="line">sp_help getinfo</span><br><span class="line"></span><br><span class="line">------------ 修改为返回班级</span><br><span class="line">ALTER PROC getinfo</span><br><span class="line">@class int</span><br><span class="line">AS</span><br><span class="line">DECLARE @cl INT&#x3D;@class</span><br><span class="line">SELECT * FROM stuinfo WHERE class&#x3D;@cl</span><br><span class="line"></span><br><span class="line">------------ 删除</span><br><span class="line">DROP PROCEDURE getinfo</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------ 使用输出参数,输出班级的存储过程</span><br><span class="line">CREATE PROC prinfo(</span><br><span class="line">@xuehao int,</span><br><span class="line">@class char(20) OUTPUT</span><br><span class="line">)</span><br><span class="line">AS</span><br><span class="line">SELECT @class&#x3D;class FROM stuinfo WHERE id&#x3D;@xuehao</span><br><span class="line">SET @class&#x3D;&#39;班级是&#39;+@class</span><br><span class="line"></span><br><span class="line">------------ 调用</span><br><span class="line">DECLARE @class  char(20)</span><br><span class="line">EXEC prinfo 5 ,@class OUTPUT</span><br><span class="line">PRINT @class</span><br><span class="line"></span><br><span class="line">------------ 删除</span><br><span class="line">DROP PROCEDURE prinfo</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------ 创建具有返回值的存储过程，返回班级</span><br><span class="line">CREATE PROC retname(</span><br><span class="line">@xuehao int</span><br><span class="line">)</span><br><span class="line">AS </span><br><span class="line">DECLARE @class int</span><br><span class="line">SELECT @class&#x3D;class FROM stuinfo WHERE id&#x3D;@xuehao;</span><br><span class="line">RETURN @class</span><br><span class="line"></span><br><span class="line">------------ 调用</span><br><span class="line">DECLARE @getclass char(20)</span><br><span class="line">EXEC @getclass&#x3D;retname 3</span><br><span class="line">PRINT @getclass</span><br><span class="line"></span><br><span class="line">------------ 删除</span><br><span class="line">DROP PROCEDURE retname</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 触发器</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line">&#x2F;*</span><br><span class="line">触发器是一种特殊的存储过程，在指定的表中的数据发生变化是自动生效，触发器被调用时自动执行增删改查语句，实现表间数据完整性和复杂的业务规则。</span><br><span class="line"></span><br><span class="line">触发器通过事件触发而自动执行。其他功能：强化约束、跟踪变化、级联运行、存储过程调用</span><br><span class="line"></span><br><span class="line">三种触发器：</span><br><span class="line">------ DML触发器，发生数据操作语言事件是调用DML触发器；</span><br><span class="line">------------ 根据时机分为AFTER触发器（执行之后）、INSTEAD OF触发器、CLR触发器（托管代码）</span><br><span class="line">------ DDL触发器：发生数据定义语言事件时······；</span><br><span class="line">------ 登录触发器：为相应LOGON事件而激发存储过程。</span><br><span class="line"></span><br><span class="line">两个表：每个触发器有两个特殊的表,两个表存在于内存，不能被直接读取。</span><br><span class="line">------ inserted表用于存储INSERT和UPDATE所影响的行的副本。</span><br><span class="line">------ deleted表····delete和UPDATE········</span><br><span class="line"></span><br><span class="line">*&#x2F;</span><br><span class="line">&#x2F;*</span><br><span class="line">------ 创建DML触发器:</span><br><span class="line">CREATE TRIGGER 触发器名</span><br><span class="line">ON 表|视图</span><br><span class="line">FOR |ALTER|INSERT OF</span><br><span class="line">INSERT | UPDATE | DELETE</span><br><span class="line">AS</span><br><span class="line">DML语句</span><br><span class="line">------ 修改DML触发器</span><br><span class="line">ALTER TRIGGER 触发器名</span><br><span class="line">ON 表|视图</span><br><span class="line">FOR |ALTER|INSERT OF</span><br><span class="line">INSERT | UPDATE | DELETE</span><br><span class="line">AS</span><br><span class="line">DML语句</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------ 创建DDL触发器：</span><br><span class="line">CREATE TRIGGER 触发器名</span><br><span class="line">ON ALL SERVER | DATABASE</span><br><span class="line">FOR | AFTER &#123;DDL事件&#125;</span><br><span class="line">AS</span><br><span class="line">DDL语句</span><br><span class="line">------ 修改DDL触发器：</span><br><span class="line">ALTER TRIGGER 触发器名</span><br><span class="line">ON ALL SERVER | DATABASE</span><br><span class="line">FOR | AFTER &#123;DDL事件&#125;</span><br><span class="line">AS</span><br><span class="line">DDL语句</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------ 禁用DML、DDL触发器</span><br><span class="line">DISABLE TRIGGER 触发器名[,....n] | ALL</span><br><span class="line">ON 对象名|数据库|服务器</span><br><span class="line">------ 启用DML、DDL触发器</span><br><span class="line">ENABLE TRIGGER 触发器名[,....n] | ALL</span><br><span class="line">ON 对象名|数据库|服务器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------ 删除DML触发器</span><br><span class="line">DROP TRIGGER 触发器名[,....n]</span><br><span class="line">------ 删除DDL触发器</span><br><span class="line">DROP TRIGGER 触发器名[,....n]</span><br><span class="line">ON 数据库|服务器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------ 创建登录触发器：</span><br><span class="line">CREATE TRIGGER 触发器名</span><br><span class="line">ON ALL SERVER</span><br><span class="line">&#123;FOR | AFTER&#125; LOGON</span><br><span class="line">AS</span><br><span class="line">SQL 语句</span><br><span class="line">------ 修改登录触发器：</span><br><span class="line">CREATE TRIGGER 触发器名</span><br><span class="line">ON ALL SERVER</span><br><span class="line">&#123;FOR | AFTER&#125; LOGON</span><br><span class="line">AS</span><br><span class="line">SQL 语句</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*&#x2F;</span><br><span class="line">------  创建删除完成时输出信息的触发器</span><br><span class="line">CREATE TRIGGER cf_delete</span><br><span class="line">ON stuinfo</span><br><span class="line">FOR DELETE</span><br><span class="line">AS</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE @name varchar(30)</span><br><span class="line">	SELECT @name&#x3D;name FROM stuinfo</span><br><span class="line">	PRINT @name+&#39;已经删除&#39;</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">------  禁用DML、DDL触发器</span><br><span class="line">DISABLE TRIGGER cf_delete</span><br><span class="line">ON stuinfo</span><br><span class="line"></span><br><span class="line">------  启用DML、DDL触发器</span><br><span class="line">ENABLE TRIGGER cf_delete</span><br><span class="line">ON stuinfo</span><br><span class="line"></span><br><span class="line">------  删除触发器</span><br><span class="line">DROP TRIGGER  cf_delete</span><br><span class="line"></span><br><span class="line">------  验证触发器</span><br><span class="line">DELETE FROM stuinfo WHERE id&#x3D;4</span><br><span class="line"></span><br><span class="line">------  返回指定表中的触发器</span><br><span class="line">sp_helptrigger stuinfo</span><br><span class="line"></span><br><span class="line">------  返回触发器的规则、默认值等</span><br><span class="line">sp_helptext cf_delete</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 游标</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line">&#x2F;*</span><br><span class="line">游标：</span><br><span class="line">-- 声明：DECLARE 游标名 CURSOR FOR SELECT语句</span><br><span class="line"></span><br><span class="line">-- 打开：OPEN 游标名</span><br><span class="line"></span><br><span class="line">-- 提取：</span><br><span class="line">FETCH[ </span><br><span class="line">	[NEXT下一行 | PRIOR前一行 | FIRST第一行 | LAST最后一行</span><br><span class="line">		|ABSOULUTE n正数表示游标头往后第n行,负数表示游标尾往前第n行</span><br><span class="line">		|RELATIVE n 返回当前行之前或之后的行</span><br><span class="line">	]</span><br><span class="line">	FROM</span><br><span class="line">	]</span><br><span class="line">	游标名</span><br><span class="line">	[INTO @局部变量[,.....n]]</span><br><span class="line">	</span><br><span class="line">-- 关闭：CLOSE 游标名</span><br><span class="line"></span><br><span class="line">-- 释放：DEALLOCATE 游标名</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">-- 游标测试案例</span><br><span class="line">------ 声明游标</span><br><span class="line">DECLARE ybt CURSOR FOR SELECT name FROM stuinfo</span><br><span class="line"></span><br><span class="line">------ 打开游标</span><br><span class="line">OPEN ybt</span><br><span class="line"></span><br><span class="line">------ 定义变量</span><br><span class="line">DECLARE @name char(64)</span><br><span class="line"></span><br><span class="line">------ 提取游标</span><br><span class="line">FETCH NEXT FROM ybt INTO @name</span><br><span class="line"></span><br><span class="line">------ 输出提取到的内容</span><br><span class="line">PRINT @name</span><br><span class="line"></span><br><span class="line">------ 关闭游标</span><br><span class="line">CLOSE ybt</span><br><span class="line"></span><br><span class="line">------ 删除游标</span><br><span class="line">DEALLOCATE ybt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 事务</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line">&#x2F;*</span><br><span class="line">事务是一个不可分割的工作逻辑单元，必须具备一下四种属性，也成为ACID</span><br><span class="line">1.原子性：要么全部执行，要么全部不执行</span><br><span class="line">2.一致性：完成后所有数据必须处于一致的状态</span><br><span class="line">3.隔离性：每个事务互不干扰</span><br><span class="line">4.持久性：所作的修改永久保持，自动修复，可以回滚</span><br><span class="line"></span><br><span class="line">分类：</span><br><span class="line">1.自动处理事务：一个语句执行成功则提交，遇到错误则回滚。回滚产生错误之前的所有语句，会阻止批处理中的所有语句的执行。</span><br><span class="line">2.隐式事务</span><br><span class="line">3.显式事务：定义和提交事务、回滚事务</span><br><span class="line">4.批量处理事务</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 锁</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 数据库安全操作</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line">&#x2F;*</span><br><span class="line">验证模式：Windows验证模式，混合验证模式</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 新建登录名</span><br><span class="line">CREATE LOGIN 登录名 WITH PASSWORD &#x3D;&#39;Password123&#39;</span><br><span class="line"></span><br><span class="line">-- 修改登录名</span><br><span class="line">ALTER LOGIN 登录名 WITH &lt;修改项&gt;[,....n]</span><br><span class="line"></span><br><span class="line">-- 删除登录名</span><br><span class="line">DROP LOGIN 登录名</span><br><span class="line"></span><br><span class="line">-- 查询登录名</span><br><span class="line">EXEC sp_helplogins</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &#x2F;*</span><br><span class="line">***************************************************</span><br><span class="line">-- 数据库管理操作</span><br><span class="line">****************************************************</span><br><span class="line">*&#x2F;</span><br><span class="line">&#x2F;*</span><br><span class="line">数据库面临的危险：系统故障、事务故障、介质故障</span><br><span class="line">备份设备类型：磁盘设备、磁带设备</span><br><span class="line">备份方式：完整备份、完整差异备份、部分备份、部分差异备份、文件和文件组备份、文件差异备份、事务日志备份、仅复制备份</span><br><span class="line">恢复模式：简单恢复模式、完整恢复模式、大容量日志恢复模式</span><br><span class="line">类型：完整数据库备份和恢复、差异备份或增量备份和恢复、事务日志备份和恢复、数据库文件及文件组备份 和 恢复完整备份特定数据文件或数据文件组</span><br><span class="line">*&#x2F;</span><br><span class="line">-- 备份</span><br><span class="line">-- 恢复</span><br><span class="line">-- 分离</span><br><span class="line">-- 复制</span><br><span class="line">-- 导入</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据库课程设计任务书"><a href="#数据库课程设计任务书" class="headerlink" title="数据库课程设计任务书"></a>数据库课程设计任务书</h2><h3 id="一、设计目的"><a href="#一、设计目的" class="headerlink" title="一、设计目的"></a>一、设计目的</h3><p>数据库课程设计是在学生系统学习了数据库课程后，按照关系型数据库的基本原理，综合运用所学的知识，以小组为单位，设计开发一个小型的数据库管理系统。通过对一个实际问题的分析、设计与实现，将理论与应用相结合，使学生学会如何把书本上学到的知识用于解决实际问题，培养学生的动手能力；另一方面，使学生能深入理解和灵活掌握教学内容。</p>
+<h3 id="二、总体要求"><a href="#二、总体要求" class="headerlink" title="二、总体要求"></a>二、总体要求</h3><p>（1） 创建数据库、表；</p>
+<p>（2） 录入每个表的数据（不小20条）</p>
+<p>（3） 根据题目要求写查询、存储过程、触发器。</p>
+<p>（4） 每人提交一份课程设计报告。</p>
+<h3 id="三、纪律要求"><a href="#三、纪律要求" class="headerlink" title="三、纪律要求"></a>三、纪律要求</h3><p>（1）上机时间，严禁迟到、早退及旷课，严禁做与课程设计无关的事情，如有违反，成绩作降级处理，情节严重者取消课程设计成绩。</p>
+<p>（2）杜绝抄袭。如若发现有抄袭现象，抄袭者和被抄袭者的课程设计成绩全部取消。</p>
+<h3 id="四、时间地点安排"><a href="#四、时间地点安排" class="headerlink" title="四、时间地点安排"></a>四、时间地点安排</h3><h3 id="五、课程设计任务如下"><a href="#五、课程设计任务如下" class="headerlink" title="五、课程设计任务如下"></a>五、课程设计任务如下</h3><h4 id="一．-用T-SQL语句创建商品销售管理数据库。"><a href="#一．-用T-SQL语句创建商品销售管理数据库。" class="headerlink" title="一． 用T-SQL语句创建商品销售管理数据库。"></a>一． 用T-SQL语句创建商品销售管理数据库。</h4><p>创建一个Sales数据库，其主数据文件逻辑名Sales_data，物理文件名f:学号Sales_data.mdf，初始大小5MB，最大尺寸为30MB，增长速度3%；数据库日志文件逻辑名称为Sales _log，物理文件名为f:学号Sales _log.ldf，初始大小为2MB，最大尺寸为20MB，增长速度为1MB。</p>
+<h4 id="二．-该数据库中包括以下七个表，试写出创建每个表的T-SQL语句。"><a href="#二．-该数据库中包括以下七个表，试写出创建每个表的T-SQL语句。" class="headerlink" title="二． 该数据库中包括以下七个表，试写出创建每个表的T-SQL语句。"></a>二． 该数据库中包括以下七个表，试写出创建每个表的T-SQL语句。</h4><table>
+<thead>
+<tr>
+<th>表名</th>
+<th>Department（部门表）</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列名</td>
+<td>数据类型</td>
+<td>空/非空</td>
+<td>约束条件</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>DepartID</td>
+<td>tinyint</td>
+<td>非空</td>
+<td>主键,标识列</td>
+<td>部门编号</td>
+</tr>
+<tr>
+<td>DepartName</td>
+<td>varchar(20)</td>
+<td>非空</td>
+<td>唯一</td>
+<td>部门名称</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>varchar(12)</td>
+<td>空</td>
+<td></td>
+<td>部门主管</td>
+</tr>
+<tr>
+<td>Dep_scription</td>
+<td>varchar(50)</td>
+<td>空</td>
+<td></td>
+<td>备注，部门说明</td>
+</tr>
+<tr>
+<td>补充说明</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>Employee（员工信息表）</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列名</td>
+<td>数据类型</td>
+<td>空/非空</td>
+<td>约束条件</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>EmployeeID</td>
+<td>char(8)</td>
+<td>非空</td>
+<td>主键</td>
+<td>员工号</td>
+</tr>
+<tr>
+<td>EmployeeName</td>
+<td>varchar(10)</td>
+<td>非空</td>
+<td></td>
+<td>员工姓名</td>
+</tr>
+<tr>
+<td>Sex</td>
+<td>char(2)</td>
+<td>非空</td>
+<td>默认为男，取值男或女</td>
+<td>性别</td>
+</tr>
+<tr>
+<td>BirthDate</td>
+<td>smalldatetime</td>
+<td>空</td>
+<td></td>
+<td>出生时间</td>
+</tr>
+<tr>
+<td>HireDate</td>
+<td>smalldatetime</td>
+<td>空</td>
+<td></td>
+<td>工作时间</td>
+</tr>
+<tr>
+<td>Salary</td>
+<td>decimal(10,2)</td>
+<td>空</td>
+<td></td>
+<td>工资</td>
+</tr>
+<tr>
+<td>DepartID</td>
+<td>tinyint</td>
+<td></td>
+<td>外键</td>
+<td>部门编号，来自部门表</td>
+</tr>
+<tr>
+<td>补充说明</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>Product（商品信息表）</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列名</td>
+<td>数据类型</td>
+<td>空/非空</td>
+<td>约束条件</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>ProductID</td>
+<td>char(8)</td>
+<td>非空</td>
+<td>主键</td>
+<td>商品编号</td>
+</tr>
+<tr>
+<td>ProductName</td>
+<td>varchar(30)</td>
+<td>非空</td>
+<td></td>
+<td>商品名称</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>decimal(10,2)</td>
+<td>空</td>
+<td></td>
+<td>单价</td>
+</tr>
+<tr>
+<td>Stock_Number</td>
+<td>int</td>
+<td>空</td>
+<td></td>
+<td>库存数量</td>
+</tr>
+<tr>
+<td>Sell_Number</td>
+<td>int</td>
+<td>空</td>
+<td></td>
+<td>已销售数量</td>
+</tr>
+<tr>
+<td>补充说明</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>Customer（客户信息表）</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列名</td>
+<td>数据类型</td>
+<td>空/非空</td>
+<td>约束条件</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>CoutomID</td>
+<td>Int</td>
+<td>非空</td>
+<td>主键、标识列</td>
+<td>客户编号</td>
+</tr>
+<tr>
+<td>CompanyName</td>
+<td>varchar(20)</td>
+<td>非空</td>
+<td></td>
+<td>公司名称</td>
+</tr>
+<tr>
+<td>ContactName</td>
+<td>varchar(10)</td>
+<td>非空</td>
+<td></td>
+<td>联系人姓名</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>varchar(16)</td>
+<td>非空</td>
+<td></td>
+<td>电话</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>varchar(50)</td>
+<td>空</td>
+<td></td>
+<td>地址</td>
+</tr>
+<tr>
+<td>EMAIL</td>
+<td>varchar(50)</td>
+<td>空</td>
+<td></td>
+<td>EMAIL</td>
+</tr>
+<tr>
+<td>补充说明</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>Provider（供应商信息表）</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列名</td>
+<td>数据类型</td>
+<td>空/非空</td>
+<td>约束条件</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>ProviderID</td>
+<td>Int</td>
+<td>非空</td>
+<td>主键、标识列</td>
+<td>供应商编号</td>
+</tr>
+<tr>
+<td>ProviderName</td>
+<td>varchar(20)</td>
+<td>非空</td>
+<td></td>
+<td>供应商名称</td>
+</tr>
+<tr>
+<td>ContactName</td>
+<td>varchar(10)</td>
+<td>非空</td>
+<td></td>
+<td>联系人姓名</td>
+</tr>
+<tr>
+<td>ProviderPhone</td>
+<td>varchar(16)</td>
+<td>空</td>
+<td></td>
+<td>供应商电话</td>
+</tr>
+<tr>
+<td>ProviderAddress</td>
+<td>varchar(50)</td>
+<td>空</td>
+<td></td>
+<td>供应商地址</td>
+</tr>
+<tr>
+<td>ProviderEMAIL</td>
+<td>varchar(50)</td>
+<td>空</td>
+<td></td>
+<td>供应商EMAIL</td>
+</tr>
+<tr>
+<td>补充说明</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>Sell_Order（销售订单表）</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列名</td>
+<td>数据类型</td>
+<td>空/非空</td>
+<td>约束条件</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>Sell_OrderID</td>
+<td>Int</td>
+<td>非空</td>
+<td>主键、标识列</td>
+<td>销售订单号</td>
+</tr>
+<tr>
+<td>ProductID</td>
+<td>char(8)</td>
+<td>非空</td>
+<td>外键</td>
+<td>商品编号</td>
+</tr>
+<tr>
+<td>EmployeeID</td>
+<td>char(8)</td>
+<td>非空</td>
+<td>外键</td>
+<td>员工号</td>
+</tr>
+<tr>
+<td>CoutomID</td>
+<td>int</td>
+<td>非空</td>
+<td>外键</td>
+<td>客户编号</td>
+</tr>
+<tr>
+<td>Sell_Number</td>
+<td>int</td>
+<td>空</td>
+<td></td>
+<td>销售数量</td>
+</tr>
+<tr>
+<td>Sell_Date</td>
+<td>smalldatetime</td>
+<td>空</td>
+<td></td>
+<td>销售日期</td>
+</tr>
+<tr>
+<td>补充说明</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>Purchase_Order（采购订单表）</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列名</td>
+<td>数据类型</td>
+<td>空/非空</td>
+<td>约束条件</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>Pur_OrderID</td>
+<td>Int</td>
+<td>非空</td>
+<td>主键、标识列</td>
+<td>采购订单号</td>
+</tr>
+<tr>
+<td>ProductID</td>
+<td>char(8)</td>
+<td>非空</td>
+<td>外键</td>
+<td>商品编号</td>
+</tr>
+<tr>
+<td>EmployeeID</td>
+<td>char(8)</td>
+<td>非空</td>
+<td>外键</td>
+<td>员工号</td>
+</tr>
+<tr>
+<td>ProviderID</td>
+<td>int</td>
+<td>非空</td>
+<td>外键</td>
+<td>供应商编号</td>
+</tr>
+<tr>
+<td>Pur_Number</td>
+<td>int</td>
+<td>空</td>
+<td></td>
+<td>采购数量</td>
+</tr>
+<tr>
+<td>Pur_Date</td>
+<td>smalldatetime</td>
+<td>空</td>
+<td></td>
+<td>采购日期</td>
+</tr>
+<tr>
+<td>补充说明</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="三、在该数据库完成以下任务，并写出T-SQL语句："><a href="#三、在该数据库完成以下任务，并写出T-SQL语句：" class="headerlink" title="三、在该数据库完成以下任务，并写出T-SQL语句："></a>三、在该数据库完成以下任务，并写出T-SQL语句：</h4><ol>
+<li><p>在员工信息表中插入本人信息 ；</p>
+</li>
+<li><p>将商品表中所有商品的价格上调20% ；</p>
+</li>
+<li><p>删除商品表中库存量为0的商品 ；</p>
+</li>
+<li><p>查询员工“王鹏”的工资；</p>
+</li>
+<li><p>查询库存量在1000～3000的商品信息；</p>
+</li>
+<li><p>查询所有员工的最高和最低工资；</p>
+</li>
+<li><p>统计公司中男女员工人数；</p>
+</li>
+<li><p>查询所有姓张和章的员工信息；</p>
+</li>
+<li><p>查询员工的平均年龄；</p>
+</li>
+</ol>
+<p>10．查询男女员工的平均工资；</p>
+<p>11．查询员工“孙丽”所在的部门名称；</p>
+<p>12．查询高于平均工资的员工姓名、性别和工资；</p>
+<p>13．查询“销售部”的所有员工的基本信息；</p>
+<ol start="14">
+<li><p>查询每个部门的员工的人数；</p>
+</li>
+<li><p>查询各种奶类商品的基本信息，并按单价降序排序。</p>
+</li>
+<li><p>查询“销售部员工张华销售的商品信息：商品编号，商品名称，销售数量，销售日期,并按销售日期排序；</p>
+</li>
+<li><p>查询供应商“新睿公司”偍供的商品信息；</p>
+</li>
+<li><p>查询“光明科技公司”的采购商品信息，商品编号，商品名称，采购数量，采购日期；</p>
+</li>
+</ol>
+<p>19．创建一个查看部门平均工资的视图，视图包含部门名称和部门平均工资并按平均工资降排序；</p>
+<ol start="20">
+<li><p>创建一个统计商品销售信息视图，视图包含商品名称、订购总数量。</p>
+</li>
+<li><p>创建一个存储过程，实现根据订单号获取订单信息的功能；</p>
+</li>
+<li><p>创建一个存储过程，用于查询指定供货商的提供的商品信息；调用存储过程查询佳宝公司的供应的商品信息。</p>
+</li>
+<li><p>创建一个存储过程，用于查询指定商品名称的接收订单总金额；调用存储过程查询苹果的订单总金额。</p>
+</li>
+<li><p>创建一个触发器，防止用户修改员工表中的部门编号。</p>
+</li>
+</ol>
+<p>25．创建一个触发器，用于实现：当删除部门表的记录时，不允许删除表中数据并给出提示信息。</p>
+<h2 id="T-SQL语句"><a href="#T-SQL语句" class="headerlink" title="T-SQL语句"></a>T-SQL语句</h2><p>/*<br>建库建表语句<br>*/</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--创建数据库</span><br><span class="line">CREATE DATABASE Sales</span><br><span class="line">ON primary(name &#x3D; &quot;Sales&quot;, filename &#x3D; &quot;&#x2F;home&#x2F;Sales_data.mdf&quot;, size &#x3D; 5 MB, maxsize &#x3D; 30 MB, filegrowth &#x3D; 3 % ) log</span><br><span class="line">ON(name &#x3D; &quot;Sales_log&quot;, filename &#x3D; &quot;&#x2F;home&#x2F;Sales_log.ldf&quot;, size &#x3D; 2 MB, maxsize &#x3D; 20 MB, filegrowth &#x3D; 1 MB)&#96;&#96;&#96;</span><br><span class="line">--选择使用数据库</span><br><span class="line">USE Sales</span><br><span class="line">--创建部门表</span><br><span class="line">CREATE TABLE Department(</span><br><span class="line">	DepartID TINYINT NOT NULL PRIMARY KEY IDENTITY,</span><br><span class="line">	DepartName VARCHAR(20) NOT NULL UNIQUE,</span><br><span class="line">	Manager VARCHAR(20) NULL,</span><br><span class="line">	Dep_scription VARCHAR(50) NULL</span><br><span class="line">)</span><br><span class="line">--创建员工信息表</span><br><span class="line">CREATE TABLE Employee(</span><br><span class="line">	EmployeeID CHAR(8) NOT NULL PRIMARY KEY,</span><br><span class="line">	EmployeeName VARCHAR(10) NOT NULL,</span><br><span class="line">	Sex CHAR(2) NOT NULL</span><br><span class="line">	default &#39;男&#39;</span><br><span class="line">	check(Sex in (&#39;男&#39;, &#39;女&#39;)),</span><br><span class="line">	BirthDate SMALLDATETIME,</span><br><span class="line">	HireDate SMALLDATETIME,</span><br><span class="line">	Salary DECIMAL(10, 2),</span><br><span class="line">	DepartID TINYINT,</span><br><span class="line">	FOREIGN KEY(DepartID) references Department(DepartID)</span><br><span class="line">)</span><br><span class="line">--创建商品信息表</span><br><span class="line">CREATE TABLE Product(</span><br><span class="line">	ProductID CHAR(8) NOT NULL PRIMARY KEY,</span><br><span class="line">	ProductName VARCHAR(30) NOT NULL,</span><br><span class="line">	Price DECIMAL(10, 2) NULL,</span><br><span class="line">	Stock_Number INT NULL,</span><br><span class="line">	Sell_Number INT NULL,</span><br><span class="line">)</span><br><span class="line">--创建客户信息表</span><br><span class="line">CREATE TABLE Customer(</span><br><span class="line">	CoutomID INT NOT NULL PRIMARY KEY IDENTITY,</span><br><span class="line">	CompanyName VARCHAR(20) NOT NULL,</span><br><span class="line">	ContactName VARCHAR(10) NOT NULL,</span><br><span class="line">	Phone VARCHAR(16) NOT NULL,</span><br><span class="line">	Address VARCHAR(50) NULL,</span><br><span class="line">	EMAIL VARCHAR(50) NULL</span><br><span class="line">)</span><br><span class="line">--创建供应商信息表</span><br><span class="line">CREATE TABLE Provider(</span><br><span class="line">	ProviderID INT NOT NULL PRIMARY KEY IDENTITY,</span><br><span class="line">	ProviderName VARCHAR(20) NOT NULL,</span><br><span class="line">	ContactName VARCHAR(10) NOT NULL,</span><br><span class="line">	ProviderPhone VARCHAR(16) NULL,</span><br><span class="line">	ProviderAddress VARCHAR(50) NULL,</span><br><span class="line">	ProviderEMAIL VARCHAR(50) NULL</span><br><span class="line">)</span><br><span class="line">--创建销售订单表</span><br><span class="line">CREATE TABLE Sell_Order(</span><br><span class="line">	Sell_OrderID INT NOT NULL PRIMARY KEY IDENTITY,</span><br><span class="line">	ProductID CHAR(8) NOT NULL,</span><br><span class="line">	EmployeeID CHAR(8) NOT NULL,</span><br><span class="line">	CoutomID INT NOT NULL,</span><br><span class="line">	Sell_Number INT NULL,</span><br><span class="line">	Sell_Date SMALLDATETIME NULL,</span><br><span class="line">	FOREIGN KEY(ProductID) references Product(ProductID),</span><br><span class="line">	FOREIGN KEY(EmployeeID) references Employee(EmployeeID),</span><br><span class="line">	FOREIGN KEY(CoutomID) references Customer(CoutomID)</span><br><span class="line">)</span><br><span class="line">--创建采购订单表</span><br><span class="line">CREATE TABLE Purchase_Order(</span><br><span class="line">	Pur_OrderID INT NOT NULL PRIMARY KEY IDENTITY,</span><br><span class="line">	ProductID CHAR(8) NOT NULL,</span><br><span class="line">	EmployeeID CHAR(8) NOT NULL,</span><br><span class="line">	ProviderID INT NOT NULL,</span><br><span class="line">	Pur_Number INT NULL,</span><br><span class="line">	Pur_Date SMALLDATETIME NULL,</span><br><span class="line">	FOREIGN KEY(ProductID) references Product(ProductID),</span><br><span class="line">	FOREIGN KEY(EmployeeID) references Employee(EmployeeID),</span><br><span class="line">	FOREIGN KEY(ProviderID) references Provider(ProviderID)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>/*<br>数据初始化语句<br>*/</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--初始化部门信息</span><br><span class="line">INSERT INTO Department(DepartName, Manager, Dep_scription)</span><br><span class="line">VALUES(&#39;总经办&#39;, &#39;史沂秀&#39;, &#39;审核公司组织机构调整和重大管理制度改革方案。&#39;), (&#39;行政部&#39;, &#39;周月杉&#39;, &#39;负责服务、协调总经理办公室工作。&#39;), (&#39;人事部&#39;, &#39;钟念梦&#39;, &#39;负责公司人力资源工作的规划。&#39;), (&#39;财务部&#39;, &#39;吴楠楠&#39;, &#39;负责公司日常财务核算。&#39;), (&#39;技术部&#39;, &#39;朱笑南&#39;, &#39;负责对新产品的设计和开发。&#39;), (&#39;教育事业部&#39;, &#39;程一璇&#39;, &#39;全面负责教育事业部的外部拓展合作以及内部协调管理.&#39;), (&#39;销售部&#39;, &#39;段寒星&#39;, &#39;收集所有与客户有关的信息资料并进行存档备案。&#39;), (&#39;品牌宣传部&#39;, &#39;易书艺&#39;, &#39;负责策划公司企业形象的媒体宣传方式和组织方案。&#39;), (&#39;风控部&#39;, &#39;戴飞双&#39;, &#39;制定公司业务风险控制的政策和制度并负责组织实施。&#39;);</span><br><span class="line">--初始化插入员工信息表</span><br><span class="line">INSERT INTO Employee(EmployeeID, EmployeeName, Sex, BirthDate, HireDate, Salary, DepartID)</span><br><span class="line">VALUES</span><br><span class="line">	(&#39;7003&#39;, &#39;张华&#39;, &#39;男&#39;, &#39;1999-04-10&#39;, &#39;2005-05-01&#39;, 5900, 7), (&#39;7004&#39;, &#39;侯涛&#39;, &#39;男&#39;, &#39;2002-03-18&#39;, &#39;2008-09-01&#39;, 4800, 7), (&#39;1001&#39;, &#39;雷昊&#39;, &#39;男&#39;, &#39;1998-01-01&#39;, &#39;2006-09-01&#39;, 2000, 1), (&#39;2001&#39;, &#39;王五&#39;, &#39;男&#39;, &#39;1998-07-11&#39;, &#39;2005-07-01&#39;, 3700, 2), (&#39;3001&#39;, &#39;雷昊强&#39;, &#39;男&#39;, &#39;1998-07-20&#39;, &#39;2005-06-01&#39;, 4200, 3), (&#39;4001&#39;, &#39;秦梓晨&#39;, &#39;女&#39;, &#39;2001-02-22&#39;, &#39;2007-05-01&#39;, 2200, 4), (&#39;5001&#39;, &#39;何鹤轩&#39;, &#39;女&#39;, &#39;2003-09-12&#39;, &#39;2007-04-01&#39;, 1800, 5), (&#39;6001&#39;, &#39;董哲瀚&#39;, &#39;女&#39;, &#39;2001-03-10&#39;, &#39;2007-01-01&#39;, 2500, 6), (&#39;7001&#39;, &#39;范修洁&#39;, &#39;女&#39;, &#39;2002-10-23&#39;, &#39;2006-02-01&#39;, 2000, 7), (&#39;8001&#39;, &#39;孙丽&#39;, &#39;女&#39;, &#39;2001-06-23&#39;, &#39;2006-11-01&#39;, 3500, 8), (&#39;9001&#39;, &#39;王鹏&#39;, &#39;男&#39;, &#39;2000-07-16&#39;, &#39;2006-12-01&#39;, 2800, 9), (&#39;1002&#39;, &#39;谭峻熙&#39;, &#39;男&#39;, &#39;1999-08-18&#39;, &#39;2006-04-01&#39;, 4500, 1), (&#39;2002&#39;, &#39;张三&#39;, &#39;男&#39;, &#39;2002-12-21&#39;, &#39;2006-05-01&#39;, 4500, 2), (&#39;3002&#39;, &#39;侯鹏涛&#39;, &#39;男&#39;, &#39;2001-03-18&#39;, &#39;2007-04-01&#39;, 2800, 3), (&#39;4002&#39;, &#39;胡君浩&#39;, &#39;女&#39;, &#39;2002-07-18&#39;, &#39;2007-02-01&#39;, 2900, 4), (&#39;5002&#39;, &#39;田浩宇&#39;, &#39;男&#39;, &#39;2000-06-28&#39;, &#39;2007-07-01&#39;, 2000, 5), (&#39;6002&#39;, &#39;黎嘉熙&#39;, &#39;女&#39;, &#39;1999-05-17&#39;, &#39;2007-06-01&#39;, 3200, 6), (&#39;7002&#39;, &#39;陈致远&#39;, &#39;女&#39;, &#39;1998-04-10&#39;, &#39;2007-05-01&#39;, 4500, 7)</span><br><span class="line">--初始化插入商品信息表</span><br><span class="line">INSERT INTO Product(ProductID, ProductName, Price, Stock_Number, Sell_Number)</span><br><span class="line">VALUES(&#39;1001&#39;, &#39;显示器&#39;, 1999, 450, 80), (&#39;1015&#39;, &#39;鼠标&#39;, 99, 1100, 7512), (&#39;1020&#39;, &#39;键盘&#39;, 199, 750, 1264), (&#39;1030&#39;, &#39;内存条8G&#39;, 199, 461, 200), (&#39;1049&#39;, &#39;内存条16G&#39;, 459, 365, 1200), (&#39;1058&#39;, &#39;散热器&#39;, 128, 4153, 5456), (&#39;1066&#39;, &#39;硬盘1T&#39;, 385, 1025, 3005), (&#39;1067&#39;, &#39;鼠标垫&#39;, 9.9, 50, 8000);</span><br><span class="line">--初始化插入客户信息表</span><br><span class="line">INSERT INTO Customer(CompanyName, ContactName, Phone, Address, EMAIL)</span><br><span class="line">VALUES(&#39;翔域网络科技有限公司&#39;, &#39;王伟&#39;, &#39;17089990006&#39;, &#39;世纪大道与唐冶东路&#39;, &#39;_11@hotmail.com&#39;), (&#39;五域网络科技有限公司&#39;, &#39;王芳&#39;, &#39;17180889788&#39;, &#39;世纪大道与唐冶西路交叉口&#39;, &#39;64@yahoo.com&#39;), (&#39;爱唯逸网络有限公司&#39;, &#39;张磊&#39;, &#39;17177881588&#39;, &#39;贞观街(绿地城)&#39;, &#39;tqK6O@gmail.com&#39;), (&#39;佰特商贸有限公司&#39;, &#39;王军&#39;, &#39;17086886788&#39;, &#39;龙凤山路唐城小区31号楼1单元&#39;, &#39;FMIon@yahoo.com&#39;), (&#39;龙源泰商贸有限公司&#39;, &#39;张艳&#39;, &#39;17089966333&#39;, &#39;兴元街&#39;, &#39;44IM0@yahoo.com&#39;), (&#39;思泉商贸有限公司&#39;, &#39;张涛&#39;, &#39;17088966555&#39;, &#39;山东省龙凤山路&#39;, &#39;epD5a@yahoo.com&#39;), (&#39;昆腾商贸有限公司&#39;, &#39;李艳&#39;, &#39;17084600666&#39;, &#39;机场路&#39;, &#39;0YGsx@gmail.com&#39;), (&#39;冠准科技有限公司&#39;, &#39;王超&#39;, &#39;17137599555&#39;, &#39;董家镇机场路种苗公司对过&#39;, &#39;jg38S@gmail.com&#39;), (&#39;阿尔泰科技有限公司&#39;, &#39;李明&#39;, &#39;17192093999&#39;, &#39;临港街道东折腰柳树村&#39;, &#39;jg38S@gmail.com&#39;), (&#39;数码人科技有限公司&#39;, &#39;李勇&#39;, &#39;17190599991&#39;, &#39;临港经济开发区机场路&#39;, &#39;4NTH8@gmail.com&#39;), (&#39;中脉科技有限公司&#39;, &#39;刘敏&#39;, &#39;17190166662&#39;, &#39;机场西路与临清路交叉路口&#39;, &#39;omp9Z@gmail.com&#39;);</span><br><span class="line">--初始化供应商信息表</span><br><span class="line">INSERT INTO Provider(ProviderName, ContactName, ProviderPhone, ProviderAddress, ProviderEMAIL)</span><br><span class="line">VALUES(&#39;新生益睿公司&#39;, &#39;王伟&#39;, &#39;18502173088&#39;, &#39;上海市浦东新区锦绣路&#39;, &#39;XxxxV2@hotmail.com&#39;), (&#39;生益科技有限公司&#39;, &#39;王伟&#39;, &#39;18502170388&#39;, &#39;上海市黄浦区龙华东路&#39;, &#39;MSh9Af@hotmail.com&#39;), (&#39;新睿公司&#39;, &#39;于朗宁&#39;, &#39;18516741674&#39;, &#39;上海市虹口区中山北一路&#39;, &#39;fbxR4H@hotmail.com&#39;), (&#39;新达共创科技有限公司&#39;, &#39;翟倩丽&#39;, &#39;13072160005&#39;, &#39;上海市浦东新区东陆路&#39;, &#39;KAqod6@hotmail.com&#39;), (&#39;奥蒂有限公司&#39;, &#39;饶亦玉&#39;, &#39;13122218880&#39;, &#39;上海市闵行区吴中路&#39;, &#39;FRvB4k@hotmail.com&#39;), (&#39;金巨和有限公司&#39;, &#39;后雨筠&#39;, &#39;13122249993&#39;, &#39;上海市青浦区沪青平公路&#39;, &#39;z1lJcT@hotmail.com&#39;), (&#39;川宏科技有限公司&#39;, &#39;池含海&#39;, &#39;17150059998&#39;, &#39;上海市青浦区沪青平公路&#39;, &#39;QgJFOg@hotmail.com&#39;), (&#39;欣益科技有限公司&#39;, &#39;姜贝丽&#39;, &#39;17100038885&#39;, &#39;上海市松江区沈砖公路&#39;, &#39;NjsRPF@hotmail.com&#39;);</span><br><span class="line">--初始化销售订单表</span><br><span class="line">INSERT INTO Sell_Order(ProductID, EmployeeID, CoutomID, Sell_Number, Sell_Date)</span><br><span class="line">VALUES(&#39;1001&#39;, &#39;7001&#39;, &#39;1&#39;, 240, &#39;2020-11-14&#39;), (&#39;1001&#39;, &#39;7002&#39;, &#39;1&#39;, 215, &#39;2020-12-14&#39;), (&#39;1020&#39;, &#39;7001&#39;, &#39;2&#39;, 370, &#39;2020-11-12&#39;), (&#39;1020&#39;, &#39;7001&#39;, &#39;2&#39;, 450, &#39;2020-04-13&#39;), (&#39;1049&#39;, &#39;7002&#39;, &#39;3&#39;, 105, &#39;2020-05-17&#39;), (&#39;1049&#39;, &#39;7001&#39;, &#39;4&#39;, 313, &#39;2020-05-25&#39;), (&#39;1058&#39;, &#39;7003&#39;, &#39;4&#39;, 275, &#39;2020-12-14&#39;), (&#39;1058&#39;, &#39;7003&#39;, &#39;5&#39;, 440, &#39;2020-11-12&#39;), (&#39;1066&#39;, &#39;7004&#39;, &#39;3&#39;, 410, &#39;2020-11-13&#39;), (&#39;1067&#39;, &#39;7004&#39;, &#39;2&#39;, 175, &#39;2020-10-17&#39;), (&#39;1058&#39;, &#39;7001&#39;, &#39;6&#39;, 393, &#39;2020-09-25&#39;), (&#39;1001&#39;, &#39;7002&#39;, &#39;1&#39;, 215, &#39;2020-11-12&#39;), (&#39;1020&#39;, &#39;7001&#39;, &#39;2&#39;, 370, &#39;2020-11-11&#39;), (&#39;1020&#39;, &#39;7001&#39;, &#39;2&#39;, 450, &#39;2020-04-20&#39;), (&#39;1049&#39;, &#39;7002&#39;, &#39;3&#39;, 105, &#39;2020-05-25&#39;), (&#39;1049&#39;, &#39;7001&#39;, &#39;4&#39;, 313, &#39;2020-05-30&#39;), (&#39;1058&#39;, &#39;7002&#39;, &#39;4&#39;, 275, &#39;2020-12-24&#39;), (&#39;1058&#39;, &#39;7004&#39;, &#39;5&#39;, 440, &#39;2020-11-20&#39;), (&#39;1066&#39;, &#39;7003&#39;, &#39;3&#39;, 410, &#39;2020-11-07&#39;), (&#39;1067&#39;, &#39;7002&#39;, &#39;2&#39;, 175, &#39;2020-10-09&#39;), (&#39;1049&#39;, &#39;7003&#39;, &#39;3&#39;, 105, &#39;2020-12-12&#39;), (&#39;1049&#39;, &#39;7003&#39;, &#39;4&#39;, 313, &#39;2020-12-12&#39;), (&#39;1058&#39;, &#39;7004&#39;, &#39;4&#39;, 275, &#39;2020-12-12&#39;), (&#39;1058&#39;, &#39;7004&#39;, &#39;5&#39;, 440, &#39;2020-12-12&#39;), (&#39;1066&#39;, &#39;7001&#39;, &#39;3&#39;, 410, &#39;2020-12-12&#39;), (&#39;1067&#39;, &#39;7002&#39;, &#39;2&#39;, 175, &#39;2020-12-12&#39;);</span><br><span class="line">--初始化采购订单表</span><br><span class="line">INSERT INTO Purchase_Order(ProductID, EmployeeID, ProviderID, Pur_Number, Pur_Date)</span><br><span class="line">VALUES(&#39;1001&#39;, &#39;7001&#39;, &#39;1&#39;, 800, &#39;2020-11-14&#39;), (&#39;1001&#39;, &#39;7002&#39;, &#39;1&#39;, 800, &#39;2020-12-14&#39;), (&#39;1020&#39;, &#39;7003&#39;, &#39;2&#39;, 800, &#39;2020-11-12&#39;), (&#39;1020&#39;, &#39;7001&#39;, &#39;2&#39;, 800, &#39;2020-04-13&#39;), (&#39;1049&#39;, &#39;7004&#39;, &#39;3&#39;, 1200, &#39;2020-05-17&#39;), (&#39;1049&#39;, &#39;7001&#39;, &#39;4&#39;, 1200, &#39;2020-05-25&#39;), (&#39;1058&#39;, &#39;7003&#39;, &#39;4&#39;, 1200, &#39;2020-12-14&#39;), (&#39;1058&#39;, &#39;7001&#39;, &#39;5&#39;, 1200, &#39;2020-11-12&#39;), (&#39;1066&#39;, &#39;7004&#39;, &#39;3&#39;, 600, &#39;2020-11-13&#39;), (&#39;1067&#39;, &#39;7002&#39;, &#39;2&#39;, 600, &#39;2020-10-17&#39;), (&#39;1058&#39;, &#39;7001&#39;, &#39;6&#39;, 600, &#39;2020-09-25&#39;), (&#39;1001&#39;, &#39;7002&#39;, &#39;1&#39;, 600, &#39;2020-11-12&#39;), (&#39;1020&#39;, &#39;7003&#39;, &#39;8&#39;, 600, &#39;2020-11-11&#39;), (&#39;1020&#39;, &#39;7004&#39;, &#39;2&#39;, 700, &#39;2020-04-20&#39;), (&#39;1049&#39;, &#39;7002&#39;, &#39;3&#39;, 700, &#39;2020-05-25&#39;), (&#39;1049&#39;, &#39;7001&#39;, &#39;4&#39;, 700, &#39;2020-05-30&#39;), (&#39;1058&#39;, &#39;7002&#39;, &#39;4&#39;, 700, &#39;2020-12-24&#39;), (&#39;1058&#39;, &#39;7001&#39;, &#39;8&#39;, 900, &#39;2020-11-20&#39;), (&#39;1066&#39;, &#39;7001&#39;, &#39;3&#39;, 900, &#39;2020-11-07&#39;), (&#39;1067&#39;, &#39;7003&#39;, &#39;2&#39;, 900, &#39;2020-10-09&#39;), (&#39;1049&#39;, &#39;7002&#39;, &#39;3&#39;, 2000, &#39;2020-12-12&#39;), (&#39;1049&#39;, &#39;7001&#39;, &#39;4&#39;, 2000, &#39;2020-12-12&#39;), (&#39;1058&#39;, &#39;7002&#39;, &#39;4&#39;, 2000, &#39;2020-12-12&#39;), (&#39;1058&#39;, &#39;7001&#39;, &#39;5&#39;, 2000, &#39;2020-12-12&#39;), (&#39;1066&#39;, &#39;7004&#39;, &#39;3&#39;, 2000, &#39;2020-12-12&#39;), (&#39;1067&#39;, &#39;7002&#39;, &#39;2&#39;, 2000, &#39;2020-12-12&#39;);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>/*<br>查询语句<br>*/<br>–1. 在员工信息表中插入本人信息；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSERT INTO Employee(EmployeeID, EmployeeName, Sex, BirthDate, HireDate, Salary, DepartID)</span><br><span class="line">VALUES(7005, &#39;xxxx&#39;, &#39;男&#39;, &#39;2000-01-01&#39;, &#39;2006-09-01&#39;, 5000, 7);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>–2. 将商品表中所有商品的价格上调20 % ；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">UPDATE Product SET Price &#x3D; 1.2 * Price;</span><br></pre></td></tr></table></figure>
+
+
+<p>–3. 删除商品表中库存量为0的商品；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">		-- 查看库存量为0的商品</span><br><span class="line">			SELECT * FROM Product WHERE Stock_Number &#x3D; 0;</span><br><span class="line">		-- 删除库存量为0的商品</span><br><span class="line">			DELETE  FROM Product WHERE Stock_Number &#x3D; 0;</span><br><span class="line">		-- 更新库存量，用于debug</span><br><span class="line">		UPDATE Product SET Stock_Number &#x3D; 0 WHERE ProductID&#x3D;1001</span><br><span class="line">&#x2F;*</span><br><span class="line">【Note】删除商品表中库存量为0的商品的时候出现“DELETE 语句与 REFERENCE 约束&quot;FK__Sell_Orde__Produ__440B1D61&quot;冲突。”因为:</span><br><span class="line"></span><br><span class="line">外键取值规则：空值或参照的主键值。</span><br><span class="line">（1）插入非空值时，如果主键表中没有这个值，则不能插入。</span><br><span class="line">（2）更新时，不能改为主键表中没有的值。</span><br><span class="line">（3）删除主键表记录时，你可以在建外键时选定外键记录一起级联删除还是拒绝删除。</span><br><span class="line">（4）更新主键记录时，同样有级联更新和拒绝执行的选择。</span><br><span class="line"></span><br><span class="line">解决办法：指定删除和更新规则</span><br><span class="line">删除规则：即指定当数据库的最终用户尝试删除某一行，而该行包含外键关系所涉及的数据时所发生的情况。</span><br><span class="line">		Restrict（限制）︰如果有从行就不能删除父行。</span><br><span class="line">		Cascade（级联）︰删除父表中的行会自动删除从表中的任何相关行。</span><br><span class="line">		No Action（无动作）︰这是默认的情况，如果有从行就不能删除父行。和restrict的区别在于何时执行约束。</span><br><span class="line">		Set Null（置空）︰该规则确保在父表删除一行时，讲从表的外键置空（如果允许空的话），行的其它列保持不变。</span><br><span class="line">更新规则：指定当数据库的用户尝试更新某一行，而该行包含外键关系所涉及的数据时所发生的情况。</span><br><span class="line">		Restrict（限制）：显示一条错误信息，告知用户不允许执行该删除操作，DELETE 将被回滚。</span><br><span class="line">		Cascade（级联）：删除包含外键关系中所涉及的数据的所有行。</span><br><span class="line">		Set Null（置空）：如果表的所有外键列都可接受空值，则将该值设置为空。仅适用于 SQL Server 2005。</span><br><span class="line">		No Action（无动作）：如果表的所有外键列均已定义默认值，则将该值设置为列定义的默认值。仅适用于 SQL Server 2005。</span><br><span class="line">更新例句：</span><br><span class="line">		ALTER TABLE Sell_Order  WITH CHECK ADD  CONSTRAINT DemoKey1 FOREIGN KEY(ProductID) references Product(ProductID) ON DELETE CASCADE ON UPDATE CASCADE</span><br><span class="line">		ALTER TABLE Purchase_Order  WITH CHECK ADD  CONSTRAINT DemoKey2 FOREIGN KEY(ProductID) references Product(ProductID) ON DELETE CASCADE ON UPDATE CASCADE</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+<p>–4. 查询员工“ 王鹏” 的工资；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT EmployeeName, Salary FROM Employee Where EmployeeName &#x3D; &#39;王鹏&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<p>–5. 查询库存量在1000～ 3000 的商品信息；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM Product WHERE Stock_Number &gt; 1000 AND Stock_Number &lt; 3000;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>–6. 查询所有员工的最高和最低工资；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT MAX(Salary) AS &#39;最高工资&#39;, MIN(Salary) AS &#39;最低工资&#39; </span><br><span class="line">FROM Employee;</span><br></pre></td></tr></table></figure>
+
+
+<p>–7. 统计公司中男女员工人数；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT Sex AS &#39;性别&#39;, COUNT( * ) AS &#39;人数&#39;</span><br><span class="line">FROM Employee GROUP BY Sex;</span><br></pre></td></tr></table></figure>
+
+
+<p>–8. 查询所有姓张和章的员工信息；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM Employee WHERE EmployeeName LIKE &#39;张%&#39;</span><br><span class="line">OR EmployeeName LIKE &#39;章%&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<p>–9. 查询员工的平均年龄；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">AVG(DATEDIFF(YYYY, CONVERT(varchar(20), DATEPART(YYYY, BirthDate)), CONVERT(varchar(20), DATEPART(YYYY, GETDATE())))) AS &#39;平均年龄&#39;</span><br><span class="line">FROM Employee;</span><br><span class="line">&#x2F;*</span><br><span class="line">【Note】</span><br><span class="line">	DATEPART(datepart,date)</span><br><span class="line">		返回日期&#x2F;时间的单独部分，比如年、月、日、小时、分钟等等。</span><br><span class="line">	CONVERT(data_type(length),data_to_be_converted,style) </span><br><span class="line">		把日期转换为新数据类型的通用函数。</span><br><span class="line">	DATEDIFF(datepart,startdate,enddate)</span><br><span class="line">		返回两个日期之间的时间。</span><br><span class="line">	AVG(column_name) </span><br><span class="line">		返回数值列的平均值。NULL 值不包括在计算中。</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+<p>–10. 查询男女员工的平均工资；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT Sex AS &#39;性别&#39;, AVG(Salary) AS &#39;平均工资&#39;</span><br><span class="line">FROM Employee GROUP BY Sex;</span><br></pre></td></tr></table></figure>
+
+
+<p>–11． 查询员工“ 孙丽” 所在的部门名称；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT Employee.EmployeeName AS &#39;姓名&#39;, Department.DepartName AS &#39;部门&#39;</span><br><span class="line">FROM Employee, Department WHERE Employee.EmployeeName &#x3D; &#39;孙丽&#39;</span><br><span class="line">AND Department.DepartID &#x3D; Employee.DepartID;</span><br></pre></td></tr></table></figure>
+
+
+<p>–12． 查询高于平均工资的员工姓名、 性别和工资；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT EmployeeName, Sex, Salary FROM Employee WHERE Salary &gt; (SELECT AVG(Salary) FROM Employee);</span><br></pre></td></tr></table></figure>
+
+
+<p>–13． 查询“ 销售部” 的所有员工的基本信息；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM Employee WHERE DepartID &#x3D; (SELECT DepartID From Department WHERE DepartName &#x3D; &#39;销售部&#39;);</span><br></pre></td></tr></table></figure>
+
+
+<p>–14. 查询每个部门的员工的人数；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT Department.DepartName, Employee.num FROM Department, (SELECT DepartID, COUNT( * ) AS num FROM Employee GROUP BY DepartID) AS Employee WHERE Employee.DepartID &#x3D; Department.DepartID;</span><br></pre></td></tr></table></figure>
+
+
+<p>–15. 查询各种奶类商品的基本信息， 并按单价降序排序。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM Product ORDER BY Price DESC;</span><br></pre></td></tr></table></figure>
+
+
+<p>–16. 查询“ 销售部员工张华销售的商品信息： 商品编号， 商品名称， 销售数量， 销售日期, 并按销售日期排序；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--根据姓名在员工表a查员工号---》销售订单b---》商品信息c</span><br><span class="line">SELECT</span><br><span class="line">a.EmployeeName AS 销售人,</span><br><span class="line">	c.ProductName AS 商品名称,</span><br><span class="line">	b.Sell_OrderID AS 商品编号,</span><br><span class="line">	b.Sell_Number AS 销售数量,</span><br><span class="line">	b.Sell_Date AS 销售日期</span><br><span class="line">FROM</span><br><span class="line">	(SELECT EmployeeName, EmployeeID FROM Employee WHERE EmployeeName &#x3D; &#39;张华&#39;) AS a,</span><br><span class="line">	Sell_Order AS b,</span><br><span class="line">	Product AS c</span><br><span class="line">WHERE</span><br><span class="line">b.EmployeeID &#x3D; a.EmployeeID</span><br><span class="line">AND</span><br><span class="line">b.ProductID &#x3D; c.ProductID</span><br><span class="line">ORDER BY</span><br><span class="line">b.Sell_Date;</span><br></pre></td></tr></table></figure>
+
+
+<p>–17. 查询供应商“ 新睿公司” 偍供的商品信息；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--根据供应商名称a--》供应商编号--》采购订单表（ 商品编号） b--》商品信息c；</span><br><span class="line">SELECT</span><br><span class="line">a.ProviderName AS 供应商名称,</span><br><span class="line">	a.ProviderID AS 供应商编号,</span><br><span class="line">	b.Pur_OrderID AS 采购订单号,</span><br><span class="line">	b.ProductID AS 商品编号,</span><br><span class="line">	c.ProductName AS 商品名称,</span><br><span class="line">	c.Price AS 商品单价,</span><br><span class="line">	c.Stock_Number AS 库存数量,</span><br><span class="line">	c.Sell_Number AS 已销售数量</span><br><span class="line">FROM</span><br><span class="line">Provider AS a,</span><br><span class="line">Purchase_Order AS b,</span><br><span class="line">Product AS c</span><br><span class="line">WHERE</span><br><span class="line">a.ProviderName &#x3D; &#39;新睿公司&#39;</span><br><span class="line">AND</span><br><span class="line">a.ProviderID &#x3D; b.ProviderID</span><br><span class="line">AND</span><br><span class="line">b.ProductID &#x3D; c.ProductID;</span><br></pre></td></tr></table></figure>
+
+
+<p>–18. 查询“ 光明科技公司” 的采购商品信息， 商品编号， 商品名称， 采购数量， 采购日期；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--根据客户名称a--》客户编号--》销售订单表（ 商品编号） b--》商品信息c；</span><br><span class="line">SELECT</span><br><span class="line">a.CompanyName AS 采购商名称,</span><br><span class="line">	a.CoutomID AS 采购商编号,</span><br><span class="line">	b.Sell_OrderID AS 采购订单号,</span><br><span class="line">	b.ProductID AS 采购商品编号,</span><br><span class="line">	c.ProductName AS 采购商品名称,</span><br><span class="line">	c.Price AS 采购商品单价,</span><br><span class="line">	b.Sell_Number AS 采购商品数量,</span><br><span class="line">	b.Sell_Date AS 采购日期</span><br><span class="line">FROM</span><br><span class="line">Customer AS a,</span><br><span class="line">Sell_Order AS b,</span><br><span class="line">Product AS c</span><br><span class="line">WHERE</span><br><span class="line">a.CompanyName &#x3D; &#39;翔域网络科技有限公司&#39;</span><br><span class="line">AND</span><br><span class="line">a.CoutomID &#x3D; b.CoutomID</span><br><span class="line">AND</span><br><span class="line">b.ProductID &#x3D; c.ProductID;</span><br></pre></td></tr></table></figure>
+
+
+<p>–19． 创建一个查看部门平均工资的视图， 视图包含部门名称和部门平均工资并按平均工资降排序；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	--创建视图</span><br><span class="line">CREATE VIEW DepartAvgSalar</span><br><span class="line">AS</span><br><span class="line">SELECT</span><br><span class="line">Department.DepartName AS 部门,</span><br><span class="line">	Employee.AvgSalar AS 平均工资</span><br><span class="line">FROM</span><br><span class="line">Department, </span><br><span class="line">(SELECT DepartID, AVG(Salary) AS AvgSalar FROM Employee GROUP BY DepartID) AS Employee</span><br><span class="line">WHERE </span><br><span class="line">Employee.DepartID&#x3D;Department.DepartID;</span><br><span class="line">	--查看视图</span><br><span class="line">		SELECT * FROM DepartAvgSalar;</span><br></pre></td></tr></table></figure>
+
+
+<p>–20. 创建一个统计商品销售信息视图， 视图包含商品名称、 订购总数量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	--创建视图</span><br><span class="line">CREATE VIEW ProductNameAndNum AS SELECT ProductName, Sell_Number FROM Product;</span><br><span class="line">	--查看视图</span><br><span class="line">		SELECT * FROM ProductNameAndNum;</span><br></pre></td></tr></table></figure>
+
+
+<p>–21. 创建一个存储过程， 实现根据订单号获取订单信息的功能；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	--创建存储过程</span><br><span class="line">CREATE PROCEDURE ProGetSellOrderInfo @Sell_OrderID CHAR(50) AS</span><br><span class="line">SELECT * FROM Sell_Order WHERE Sell_OrderID &#x3D; @Sell_OrderID;</span><br><span class="line">	--调用存储过程</span><br><span class="line">	EXEC ProGetSellOrderInfo 1</span><br><span class="line">	EXEC ProGetSellOrderInfo 2</span><br></pre></td></tr></table></figure>
+
+
+<p>–22. 创建一个存储过程， 用于查询指定供货商的提供的商品信息； 调用存储过程查询佳宝公司的供应的商品信息。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	--创建存储过程</span><br><span class="line">CREATE PROCEDURE ProGetProviderInfo @ProviderName CHAR(50) AS</span><br><span class="line">SELECT</span><br><span class="line">a.ProviderName AS 供应商名称,</span><br><span class="line">	a.ProviderID AS 供应商编号,</span><br><span class="line">	b.Pur_OrderID AS 采购订单号,</span><br><span class="line">	b.ProductID AS 商品编号,</span><br><span class="line">	c.ProductName AS 商品名称,</span><br><span class="line">	c.Price AS 商品单价,</span><br><span class="line">	c.Stock_Number AS 库存数量,</span><br><span class="line">	c.Sell_Number AS 已销售数量</span><br><span class="line">FROM</span><br><span class="line">Provider AS a,</span><br><span class="line">Purchase_Order AS b,</span><br><span class="line">Product AS c</span><br><span class="line">WHERE</span><br><span class="line">a.ProviderName &#x3D; @ProviderName</span><br><span class="line">AND</span><br><span class="line">a.ProviderID &#x3D; b.ProviderID</span><br><span class="line">AND</span><br><span class="line">b.ProductID &#x3D; c.ProductID;</span><br><span class="line">	--调用存储过程</span><br><span class="line">	EXEC ProGetProviderInfo 生益科技有限公司</span><br></pre></td></tr></table></figure>
+
+
+<p>–23. 创建一个存储过程， 用于查询指定商品名称的接收订单总金额； 调用存储过程查询苹果的订单总金额。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--商品名称--》商品编号--》已销售 * 单价</span><br><span class="line">	--创建存储过程</span><br><span class="line">CREATE PROCEDURE SumPrice @ProductName CHAR(50) AS</span><br><span class="line">SELECT</span><br><span class="line">ProductName AS 商品名称,</span><br><span class="line">Sell_Number * Price AS 总金额</span><br><span class="line">FROM</span><br><span class="line">Product</span><br><span class="line">WHERE</span><br><span class="line">ProductName &#x3D; @ProductName;</span><br><span class="line">	--调用存储过程</span><br><span class="line">	EXEC SumPrice &#39;显示器&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<p>–24. 创建一个触发器， 防止用户修改员工表中的部门编号。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	--创建触发器</span><br><span class="line">create trigger PreventChanges on Employee</span><br><span class="line">instead of update</span><br><span class="line">AS</span><br><span class="line">if UPDATE(DepartID)</span><br><span class="line">begin</span><br><span class="line">print &#39;安全警告：不允许修改员工表中的部门编号&#39;</span><br><span class="line">raiserror(&#39;安全警告：不允许修改员工表中的部门编号&#39;, 16, 1)</span><br><span class="line">end</span><br><span class="line">	--测试触发器</span><br><span class="line">	UPDATE Employee SET DepartID &#x3D; 5 WHERE EmployeeID &#x3D; &#39;1001&#39;</span><br></pre></td></tr></table></figure>
+
+
+<p>–25． 创建一个触发器， 用于实现： 当删除部门表的记录时， 不允许删除表中数据并给出提示信息。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create trigger DeletionIsNotAllowed on Department</span><br><span class="line">instead of Delete</span><br><span class="line">AS</span><br><span class="line">begin</span><br><span class="line">print &#39;安全警告：不允许删除表中数据&#39;</span><br><span class="line">raiserror(&#39;安全警告：不允许删除表中数据&#39;, 16, 1)</span><br><span class="line">end</span><br><span class="line">	--测试触发器</span><br><span class="line">	DELETE Department WHERE DepartID &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+
+
+
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/SQL-Server/">SQL Server</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%BB%BB%E5%8A%A1%E4%B9%A6"><span class="toc-text">数据库课程设计任务书</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%BE%E8%AE%A1%E7%9B%AE%E7%9A%84"><span class="toc-text">一、设计目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%80%BB%E4%BD%93%E8%A6%81%E6%B1%82"><span class="toc-text">二、总体要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%BA%AA%E5%BE%8B%E8%A6%81%E6%B1%82"><span class="toc-text">三、纪律要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%97%B6%E9%97%B4%E5%9C%B0%E7%82%B9%E5%AE%89%E6%8E%92"><span class="toc-text">四、时间地点安排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%BB%BB%E5%8A%A1%E5%A6%82%E4%B8%8B"><span class="toc-text">五、课程设计任务如下</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%EF%BC%8E-%E7%94%A8T-SQL%E8%AF%AD%E5%8F%A5%E5%88%9B%E5%BB%BA%E5%95%86%E5%93%81%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%82"><span class="toc-text">一． 用T-SQL语句创建商品销售管理数据库。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8E-%E8%AF%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E5%8C%85%E6%8B%AC%E4%BB%A5%E4%B8%8B%E4%B8%83%E4%B8%AA%E8%A1%A8%EF%BC%8C%E8%AF%95%E5%86%99%E5%87%BA%E5%88%9B%E5%BB%BA%E6%AF%8F%E4%B8%AA%E8%A1%A8%E7%9A%84T-SQL%E8%AF%AD%E5%8F%A5%E3%80%82"><span class="toc-text">二． 该数据库中包括以下七个表，试写出创建每个表的T-SQL语句。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%9C%A8%E8%AF%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8B%E4%BB%BB%E5%8A%A1%EF%BC%8C%E5%B9%B6%E5%86%99%E5%87%BAT-SQL%E8%AF%AD%E5%8F%A5%EF%BC%9A"><span class="toc-text">三、在该数据库完成以下任务，并写出T-SQL语句：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T-SQL%E8%AF%AD%E5%8F%A5"><span class="toc-text">T-SQL语句</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By null</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="/blog/js/tw_cn.js"></script><script src="/blog/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

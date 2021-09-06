@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>frp内网穿透 | 博客</title><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="FRP是什么：FRP 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。 FRP原理：FRP主要由 客户端(frpc) 和 服务端(frps) 组成，服务端通常部署在具有公网 IP 的机器上，客户端通常部署在需要穿透的内网服务所在的机器上。内网服务由于没有公网 IP，不能被非">
+<meta property="og:type" content="article">
+<meta property="og:title" content="frp内网穿透">
+<meta property="og:url" content="https://github.com/wenoif/frp.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="FRP是什么：FRP 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。 FRP原理：FRP主要由 客户端(frpc) 和 服务端(frps) 组成，服务端通常部署在具有公网 IP 的机器上，客户端通常部署在需要穿透的内网服务所在的机器上。内网服务由于没有公网 IP，不能被非">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-04-25T18:31:54.000Z">
+<meta property="article:modified_time" content="2021-09-06T15:50:07.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg"><link rel="canonical" href="https://github.com/wenoif/frp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-06 23:50:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/main.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">frp内网穿透</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2021-04-25T18:31:54.000Z" title="undefined 2021-04-26 02:31:54">2021-04-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E8%83%A1%E4%B9%B1%E6%8A%98%E8%85%BE/">胡乱折腾</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><p>FRP是什么：FRP 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。</p>
+<p>FRP原理：FRP主要由 <strong>客户端(frpc)</strong> 和 <strong>服务端(frps)</strong> 组成，服务端通常部署在具有公网 IP 的机器上，客户端通常部署在需要穿透的内网服务所在的机器上。内网服务由于没有公网 IP，不能被非局域网内的其他用户访问。用户通过访问服务端的 frps，由 frp 负责根据请求的端口或其他信息将请求路由到对应的内网机器，从而实现通信。</p>
+<p><a target="_blank" rel="noopener" href="https://gofrp.org/">FRP官网</a></p>
+<p><a href="https://github.com/fatedier/frp/releases">FRP下载</a> ：服务端和客户端都在一个下载的压缩包内，frpc是客户端(本地，没有内网的机器)，frps是服务端（有外网ip，通过此ip访问客户端）</p>
+<p>FRP的开关：客户端的启动需要加上-c，服务器端需要开启网络放行，如果是云服务器（阿里百度等）需要在控制台开启放行，已经安装宝塔的话还需要在宝塔页面放行端口。</p>
+<p>启动服务端:<code>frps frps.ini</code></p>
+<p>启动客户端:<code>frpc.exe -c frpc.ini</code></p>
+<h3 id="任何人都可以ssh访问内网配置"><a href="#任何人都可以ssh访问内网配置" class="headerlink" title="任何人都可以ssh访问内网配置"></a>任何人都可以ssh访问内网配置</h3><p>客户端frpc.ini</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; XX.XX.XXX.XX</span><br><span class="line"># server_addr &#x3D; 外网ip地址</span><br><span class="line"></span><br><span class="line">server_port &#x3D; 9900</span><br><span class="line"># server_port &#x3D; 外网端口</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line"># 启动后使用：ssh -p [remote_port] [本地用户名]@[server_addr] 即可ssh连接到内网主机</span><br><span class="line"></span><br><span class="line">type &#x3D; tcp</span><br><span class="line"># type &#x3D; 类型</span><br><span class="line"></span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line"># local_ip &#x3D; 监听的本地ip</span><br><span class="line"></span><br><span class="line">local_port &#x3D; 22</span><br><span class="line"># local_port &#x3D; 监听的本地ip端口</span><br><span class="line"></span><br><span class="line">remote_port &#x3D; 9922</span><br><span class="line"># remote_port &#x3D; 通过访问服务器的这个端口连接本地</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>服务端frps.ini</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port &#x3D; 9900</span><br><span class="line"># bind_port &#x3D; 监听的端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>启动后使用：ssh -p [remote_port] [本地用户名]@[server_addr] 即可ssh连接到内网主机</p>
+<h3 id="ssh加密访问到内网的配置"><a href="#ssh加密访问到内网的配置" class="headerlink" title="ssh加密访问到内网的配置"></a>ssh加密访问到内网的配置</h3><p>客户端frpc.ini</p>
+<p>启动后在想要连接的机器上也需要运行frpc才可以连接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; XX.XX.XXX.XX</span><br><span class="line"># server_addr &#x3D; 外网ip地址</span><br><span class="line"></span><br><span class="line">server_port &#x3D; 9900</span><br><span class="line"># server_port &#x3D; 外网端口</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[secret_ssh]</span><br><span class="line"># 启动后在想要连接的机器上也需要运行frpc才可以连接</span><br><span class="line"></span><br><span class="line">type &#x3D; stcp</span><br><span class="line"># type &#x3D; 类型</span><br><span class="line"></span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line"># local_ip &#x3D; 监听的本地ip</span><br><span class="line"></span><br><span class="line">local_port &#x3D; 22</span><br><span class="line"># local_port &#x3D; 监听的本地ip端口</span><br><span class="line"></span><br><span class="line">sk &#x3D; abcdefg</span><br><span class="line"># 只有 sk 一致的用户才能访问到此服务</span><br><span class="line"></span><br><span class="line">remote_port &#x3D; 9922</span><br><span class="line"># remote_port &#x3D; 通过访问服务器的这个端口连接本地</span><br></pre></td></tr></table></figure>
+
+
+
+<p>想要通过ssh访问到被内网渗透的机器frpc.ini</p>
+<p>在本地运行后才可以访问到内网，ssh -p [bind_port] [被内网穿透的用户名]@[bind_addr]</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; XX.XX.XXX.XX</span><br><span class="line"># server_addr &#x3D; 外网ip地址</span><br><span class="line"></span><br><span class="line">server_port &#x3D; 9900</span><br><span class="line"># server_port &#x3D; 外网端口</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[secret_ssh_visitor]</span><br><span class="line"># 在本地运行后才可以访问到内网，ssh -p [bind_port] [被内网穿透的用户名]@[bind_addr]</span><br><span class="line">type &#x3D; stcp</span><br><span class="line"></span><br><span class="line">role &#x3D; visitor</span><br><span class="line"># role &#x3D; stcp 的访问者</span><br><span class="line"></span><br><span class="line">server_name &#x3D; secret_ssh</span><br><span class="line"># server_name &#x3D; 要访问的 stcp 代理的名字</span><br><span class="line"></span><br><span class="line">sk &#x3D; abcdefg </span><br><span class="line"># 只有 sk 一致的用户才能访问到此服务</span><br><span class="line"></span><br><span class="line"># 绑定本地端口用于访问 SSH 服务</span><br><span class="line">bind_addr &#x3D; 127.0.0.1</span><br><span class="line">bind_port &#x3D; 1270</span><br></pre></td></tr></table></figure>
+
+
+
+<p>服务端frps.ini</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port &#x3D; 9900</span><br><span class="line"># bind_port &#x3D; 监听的端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="开启简单的文件访问服务"><a href="#开启简单的文件访问服务" class="headerlink" title="开启简单的文件访问服务"></a>开启简单的文件访问服务</h3><p>客户端frpc.ini</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port &#x3D; 9900</span><br><span class="line"># bind_port &#x3D; 监听的端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>服务端frps.ini</p>
+<p>对外提供简单的文件访问服务，启动后访问：http://[server_addr]:[remote_port]/[plugin_strip_prefix]/ ，使用[plugin_http_user]、[plugin_http_passwd]登录后，就会看到[plugin_local_path]中的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; XX.XX.XXX.XX</span><br><span class="line"># server_addr &#x3D; 外网ip地址</span><br><span class="line"></span><br><span class="line">server_port &#x3D; 9900</span><br><span class="line"># server_port &#x3D; 外网端口</span><br><span class="line"></span><br><span class="line">[test_static_file]</span><br><span class="line"># 对外提供简单的文件访问服务，启动后访问：http:&#x2F;&#x2F;[server_addr]:[remote_port]&#x2F;[plugin_strip_prefix]&#x2F; ，使用[plugin_http_user]、[plugin_http_passwd]登录后，就会看到[plugin_local_path]中的文件</span><br><span class="line"></span><br><span class="line">type &#x3D; tcp</span><br><span class="line">remote_port &#x3D; 9920</span><br><span class="line">plugin &#x3D; static_file</span><br><span class="line"># plugin &#x3D; 插件名称</span><br><span class="line">plugin_local_path &#x3D;  D:\test</span><br><span class="line"># plugin_local_path &#x3D; 要对外暴露的文件目录</span><br><span class="line">plugin_strip_prefix &#x3D; share</span><br><span class="line"># 用户访问 URL 中会被去除前缀，保留的内容即为要访问的文件路径</span><br><span class="line">plugin_http_user &#x3D; user</span><br><span class="line">plugin_http_passwd &#x3D; pass</span><br><span class="line"># 账号密码</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E4%BD%95%E4%BA%BA%E9%83%BD%E5%8F%AF%E4%BB%A5ssh%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E9%85%8D%E7%BD%AE"><span class="toc-text">任何人都可以ssh访问内网配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh%E5%8A%A0%E5%AF%86%E8%AE%BF%E9%97%AE%E5%88%B0%E5%86%85%E7%BD%91%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">ssh加密访问到内网的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1"><span class="toc-text">开启简单的文件访问服务</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By null</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="/blog/js/tw_cn.js"></script><script src="/blog/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

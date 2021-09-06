@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>嵌入式介绍 | 博客</title><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在网上整理的一些关于嵌入式介绍 嵌入式历史　　1970年左右出现了嵌入式系统的概念，此时的嵌入式系统很多都不采用操作系统，它们只是为了实现某个控制功能，使用一个简单的循环控制对外界的控制请求进行处理。当应用系统越来越复杂、利用的范围越来越广泛的时候，每添加一项新的功能，都可能需要从头开始设计。没有操作系统已成为一个最大的缺点了。 　　C语言的出现使操作系统开发变得简单。从上世纪80年代开始，出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嵌入式介绍">
+<meta property="og:url" content="https://github.com/wenoif/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="在网上整理的一些关于嵌入式介绍 嵌入式历史　　1970年左右出现了嵌入式系统的概念，此时的嵌入式系统很多都不采用操作系统，它们只是为了实现某个控制功能，使用一个简单的循环控制对外界的控制请求进行处理。当应用系统越来越复杂、利用的范围越来越广泛的时候，每添加一项新的功能，都可能需要从头开始设计。没有操作系统已成为一个最大的缺点了。 　　C语言的出现使操作系统开发变得简单。从上世纪80年代开始，出">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-12-26T13:30:40.000Z">
+<meta property="article:modified_time" content="2021-09-06T15:50:07.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg"><link rel="canonical" href="https://github.com/wenoif/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%BB%8B%E7%BB%8D"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-06 23:50:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/avatar.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/wenoif/blog/WENOIF/main.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw iconfont icon-jia"></i><span> 博客首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw iconfont icon-guidang1"></i><span> 文章归档</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wenoif.github.io"><i class="fa-fw icon-jia"></i><span> 个人主页</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">嵌入式介绍</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-12-26T13:30:40.000Z" title="undefined 2020-12-26 21:30:40">2020-12-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E6%91%98%E5%BD%95%E6%94%B6%E8%97%8F/">摘录收藏</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"> <a id="more"></a>
+<p>在网上整理的一些关于嵌入式介绍</p>
+<h2 id="嵌入式"><a href="#嵌入式" class="headerlink" title="嵌入式"></a>嵌入式</h2><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><p>　　1970年左右出现了嵌入式系统的概念，此时的嵌入式系统很多都不采用操作系统，它们只是为了实现某个控制功能，使用一个简单的循环控制对外界的控制请求进行处理。当应用系统越来越复杂、利用的范围越来越广泛的时候，每添加一项新的功能，都可能需要从头开始设计。没有操作系统已成为一个最大的缺点了。</p>
+<p>　　C语言的出现使操作系统开发变得简单。从上世纪80年代开始，出现了各种各样的商用嵌入式操作系统百家争鸣的局面，比较著名的有VxWorks、pSOS和Windows CE等等，这些操作系统大部分是为专有系统而开发的。另外，源代码开放的嵌入式<a href="https://link.zhihu.com/?target=http://www.elecfans.com/tags/linux/">Linux</a>，由于其强大的网络功能和低成本，近来也得到了越来越多的应用。</p>
+<p>​        嵌入式系统通常包括构成软件的基本运行环境的硬件和操作系统两部分。嵌入式系统的运行环境和应用场合决定了嵌入式系统具有区别于其它操作系统的一些特点。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>IEEE：嵌入式系统是“控制、监控或者辅助设备、机器和车间运行的装置”。这主要是从应用上加以定义的，从中可以看出嵌入式系统是软件和硬件的综合体，还可以涵盖机械等附属装置。</p>
+<p>普遍认同：以应用为中心、以计算机技术为基础，软件硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。</p>
+<h3 id="产品"><a href="#产品" class="headerlink" title="产品"></a>产品</h3><p>传统嵌入式产品：空调主控模块、冰箱主控模块、家用遥控器、智能手机、教学投影仪、音响系统、雷达系统、路由器等等</p>
+<p>前沿嵌入式产品：无人机、智能音响、机器人控制、城市天眼系统、智能家具、自动驾驶汽车、扫地机器人、小米手环等等</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><h4 id="系统特点"><a href="#系统特点" class="headerlink" title="系统特点"></a>系统特点</h4><ul>
+<li>微内核结构：大多数操作系统至少被划分为内核层和应用层两个层次。内核只提供基本的功能，如建立和管理进程、提供文件系统、管理设备等，这些功能以系统调用方式提供给用户。一些桌面操作系统，如Windows、Linux等，将许多功能引入内核，操作系统的内核变得越来越大。内核变大使得占用的资源增多，剪裁起来很麻烦。大多数嵌入式操作系统采用了微内核结构，内核只提供基本的功能，比如：任务的调度、任务之间的通信与同步、内存管理、<a href="https://link.zhihu.com/?target=http://www.elecfans.com/tags/%E6%97%B6%E9%92%9F/">时钟</a>管理等。其它的应用组件，比如网络功能、文件系统、GUI系统等均工作在用户态，以系统进程或函数调用的方式工作。因而系统都是可裁减的，用户可以根据自己的需要选用相应的组件。</li>
+<li>任务调度：任务即线程。大多数的嵌入式操作系统支持多任务。多任务运行的实现实际是靠CPU在多个任务之间切换、调度。任务的调度有三种方式：可抢占式调度、不可抢占式调度和时间片轮转调度。目前，大多数嵌入式操作系统对不同优先级的任务采用基于优先级的抢占式调度法，对相同优先级的任务则采用时间片轮转调度法。<ul>
+<li>不可抢占式调度：一个任务一旦获得CPU就独占CPU运行，除非由于某种原因，它决定放弃CPU的使用权；</li>
+<li>可抢占式调度：基于任务优先级的，当前正在运行的任务可以随时让位给优先级更高的处于就绪态的其它任务；</li>
+<li>时间片轮转调度：当两个或两个以上任务有同样的优先级，不同任务轮转地使用CPU，直到系统分配的CPU时间片用完，这就是时间片轮转调度。</li>
+</ul>
+</li>
+<li>硬实时和软实时：<ul>
+<li>软实时系统并不要求限定某一任务必须在一定的时间内完成，只要求各任务运行得越快越好；</li>
+<li>硬实时系统对系统响应时间有严格要求，一旦系统响应时间不能满足，就可能会引起系统崩溃或致命的错误，一般在工业控制中应用较多。</li>
+</ul>
+</li>
+<li>内存管理：针对有内存管理单元（MMU）的处理器设计的一些桌面操作系统，如Windows、Linux，使用了虚拟存储器的概念。虚拟内存地址被送到MMU。在这里，虚拟地址被映射为物理地址，实际存储器被分割为相同大小的页面，采用分页的方式载入进程。一个程序在运行之前，没有必要全部装入内存，而是仅将那些当前要运行的部分页面装入内存运行。<ul>
+<li>大多数嵌入式系统针对没有MMU的处理器设计，不能使用处理器的虚拟内存管理技术，采用的是实存储器管理策略。嵌入式系统的开发人员不得不参与系统的内存管理。从编译内核开始，开发人员必须告诉系统这块开发板到底拥有多少内存；在开发应用程序时，必须考虑内存的分配情况并关注应用程序需要运行空间的大小。</li>
+<li>由于采用实存储器管理策略，用户程序同内核以及其它用户程序在一个地址空间，程序开发时要保证不侵犯其它程序的地址空间，以使得程序不至于破坏系统的正常工作，或导致其它程序的运行异常；因而，嵌入式系统的开发人员对软件中的一些内存操作要格外小心。</li>
+</ul>
+</li>
+</ul>
+<h4 id="开发特点"><a href="#开发特点" class="headerlink" title="开发特点"></a>开发特点</h4><ul>
+<li><p>开发过程：有宿主机和目标机之分。宿主机是执行编译、链接、定址过程的计算机；目标机指运行嵌入式软件的硬件平台。首先须把应用程序转换成可以在目标机上运行的二进制代码。这一过程包含三个步骤：编译、链接、定址。编译过程由交叉编译器实现。</p>
+</li>
+<li><p>调试：嵌入式调试采用交叉<a href="https://link.zhihu.com/?target=http://www.hqchip.com/app/311">调试器</a>，一般采用宿主机-目标机的调试方式，它们之间由串行口线或<a href="https://link.zhihu.com/?target=http://www.elecfans.com/tags/%E4%BB%A5%E5%A4%AA%E7%BD%91/">以太网</a>或BDM线相连。交叉调试有任务级、源码级和汇编级的调试，调试时需将宿主机上的应用程序和操作系统内核下载到目标机的RAM中或直接烧录到目标机的ROM中。目标<a href="https://link.zhihu.com/?target=http://www.hqchip.com/app/220">监控</a>器是调试器对目标机上运行的应用程序进行控制的代理（Debugger Agent），事先被固化在目标机的Flash、ROM中，在目标机上电后自动启动，并等待宿主机方调试器发来的命令，配合调试器完成应用程序的下载、运行和基本的调试功能，将调试信息返回给宿主机。</p>
+</li>
+<li><p>移植：大部分嵌入式开发人员选用的软件开发模式是先在PC机上编写软件，再进行软件的移植工作。在PC机上编写软件时，要注意软件的可移植性，选用具有较高移植性的编程语言（如C语言），尽量少调用操作系统函数，注意屏蔽不同硬件平台带来的字节顺序、字节对齐等问题。以下是我们在移植协议栈过程中的一些体会。</p>
+</li>
+</ul>
+<h4 id="处理器分类"><a href="#处理器分类" class="headerlink" title="处理器分类"></a>处理器分类</h4><ul>
+<li>嵌入式微处理器<ul>
+<li>在应用中，一般是将微处理器装配在专门设计的<a href="https://link.zhihu.com/?target=http://www.hqpcb.com/zhuoluye11/?tid=26&plan=fashaoyou">电路板</a>上，在母板上只保留和嵌入式相关的功能即可，这样可以满足嵌入式系统体积小和功耗低的要求。目前的嵌入式处理器主要包括：PowerPC、Motorola 68000、<a href="https://link.zhihu.com/?target=http://www.elecfans.com/tags/arm/">ARM</a>系列等等。</li>
+</ul>
+</li>
+<li>嵌入式微控制器（单片机）<ul>
+<li>嵌入式微控制器又称为<a href="https://link.zhihu.com/?target=http://www.elecfans.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>，它将CPU、<a href="https://link.zhihu.com/?target=http://www.hqchip.com/app/724">存储器</a>（少量的<a href="https://link.zhihu.com/?target=http://www.elecfans.com/tags/ram/">RAM</a>、<a href="https://link.zhihu.com/?target=http://www.elecfans.com/tags/rom/">ROM</a>或两者都有）和其它外设封装在同一片<a href="https://link.zhihu.com/?target=http://www.hqchip.com/app/876">集成电路</a>里。常见的有8051。</li>
+</ul>
+</li>
+<li>嵌入式<a href="https://link.zhihu.com/?target=http://www.elecfans.com/tags/dsp/">DSP</a>（Digital Signal Processor）<ul>
+<li>嵌入式DSP专门用来对离散时间信号进行极快的处理计算，提高编译效率和执行速度。在数字滤波、<a href="https://link.zhihu.com/?target=http://www.elecfans.com/emb/fpga/20171116580796.html">FFT</a>、谱分析、图像处理的分析等领域，DSP正在大量进入嵌入式市场。</li>
+</ul>
+</li>
+</ul>
+<h4 id="软件开发分类"><a href="#软件开发分类" class="headerlink" title="软件开发分类"></a>软件开发分类</h4><ul>
+<li>嵌入式驱动工程师：<ul>
+<li>编写和移植各种芯片驱动（如音频芯片），优化硬件设备驱动（如温湿度传感器），得精通各种硬件接口协议（如I2C协议）、系统调度、信号量、锁机制等等，开发难度最大。该类开发者一般是软硬件综合型人才，一般的嵌入式驱动工程师指Linux上的驱动开发工程师，需要精通Linux驱动框架（platform框架、input子系统框架等），结合芯片本身去编写驱动，驱动的好坏很大程度上决定一个产品的好坏。业界对驱动人才的定义是三年才算入门，可见此门槛之高。</li>
+</ul>
+</li>
+<li>嵌入式系统工程师：<ul>
+<li>主要是编写固件，根据不同平台移植操作系统，根据应用场景来优化系统，需要熟悉整个操作系统组成与调度，对固件的稳定性高求很高，如果系统不稳定，驱动和应用也是白做的。</li>
+</ul>
+</li>
+<li>嵌入式应用工程师：<ul>
+<li>编写业务逻辑程序，调用驱动工程师提供的接口控制设备，软件开发过程所涉内容范围非常广，主要使用C语言开发，但经常会涉及C++、Java、python、JavaScript、PHP等各类语言以及各种脚本语言、数据库、前端后台、各种通讯协议、甚至一些从来没听过的协议或概念，需要很强的学习能力，该职位也是各大公司需量最大的，一般10人的开发小组，驱动开发与系统开发与应用开发的比例是1：2：7。</li>
+</ul>
+</li>
+</ul>
+<h3 id="现况"><a href="#现况" class="headerlink" title="现况"></a>现况</h3><ul>
+<li>目前的嵌入式开发更倾向于智能化，也就是我们所说的智能硬件（硬件+软件），从现在各种前沿的嵌入式产品来看的确如此，嵌入式产品的一个发展趋势是更倾向与自动化控制和人机交互，而不是强调“算法”这一块，要区分你仅仅是一名嵌入式工程师而不是算法工程师，什么一大堆“人工智能”、“阿尔法狗”、“深度学习”、“神经网络”都不需要深入理解，那是研究生、博士生做的，小生并不是说你的能力不足，而是“术业有专攻”，这并不是一名嵌入式工程师的工作量，你需要做的仅仅是与他们的“云端大脑”进行对接，调用他们API就完事了。</li>
+<li>学历：如果想从事学科研发类工作，如芯片开发、AI算法研究、人工智能基础研究等，建议还是考研，不然根本没有机会从事相关学科工作。如果想从事应用开发型人才，如嵌入式软件工程师，嵌入式驱动工程师，方案集成开发等等产品级开发工作，本科基本上是可以胜任；PS：对于考研的同学，目前行业上最火热的还是AI算法这一块，当然数学的要求非常高。</li>
+</ul>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/fengfeng0328/article/details/82925001">一线工程师告诉你嵌入式真实现状与发展前景</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/337274913">嵌入式系统的技术特点及广泛运用</a></li>
+<li></li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F"><span class="toc-text">嵌入式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2"><span class="toc-text">历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A7%E5%93%81"><span class="toc-text">产品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%89%B9%E7%82%B9"><span class="toc-text">系统特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%89%B9%E7%82%B9"><span class="toc-text">开发特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E5%88%86%E7%B1%BB"><span class="toc-text">处理器分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%88%86%E7%B1%BB"><span class="toc-text">软件开发分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E5%86%B5"><span class="toc-text">现况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By null</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="/blog/js/tw_cn.js"></script><script src="/blog/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
